@@ -20,12 +20,12 @@ public class Login {
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setLayout(null);
-        ImageIcon icon=new ImageIcon("1682533433732.png");
+        ImageIcon icon=new ImageIcon("logo.png");
         frame.setIconImage(icon.getImage());
         panel=new JLayeredPane();
         panel.setBounds(0,0,1000,600);
         frame.add(panel);
-        ImageIcon image=new ImageIcon("Rectangle 1.jpg");
+        ImageIcon image=new ImageIcon("login page.jpg");
         label=new JLabel();
         label.setOpaque(true);
         label.setBounds(0,0,1000,600);
@@ -41,11 +41,11 @@ public class Login {
 
         login=new JButton();
         guest=new JButton();
-        ImageIcon loginButton=new ImageIcon("Rectangle 18 (2).png");
+        ImageIcon loginButton=new ImageIcon("login button.png");
         login.setIcon(loginButton);
         login.setBounds(500,405,105,29);
         login.setBorderPainted(false);
-        ImageIcon guestButton=new ImageIcon("Rectangle 18 (3).png");
+        ImageIcon guestButton=new ImageIcon("guest button.png");
         guest.setIcon(guestButton);
         guest.setBounds(653,405,105,29);
         guest.setBorderPainted(false);

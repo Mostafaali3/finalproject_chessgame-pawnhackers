@@ -22,13 +22,13 @@ public class Players{
             frame.setLocationRelativeTo(null);
             frame.setResizable(false);
             frame.setLayout(null);
-            ImageIcon icon = new ImageIcon("1682533433732.png");
+            ImageIcon icon = new ImageIcon("logo.png");
             frame.setIconImage(icon.getImage());
             panel = new JLayeredPane();
             panel.setBounds(0, 0, 1000, 600);
             frame.add(panel);
 
-            ImageIcon image=new ImageIcon("Rectangle 3.png");
+            ImageIcon image=new ImageIcon("players page.png");
             label=new JLabel();
             label.setOpaque(true);
             label.setBounds(0,0,1000,600);
@@ -47,7 +47,7 @@ public class Players{
             timer.setBounds(463,397,74,24);
 
             set=new JButton();
-            ImageIcon setButton=new ImageIcon("Rectangle 18 (1).png");
+            ImageIcon setButton=new ImageIcon("set button.png");
             set.setIcon(setButton);
             set.setBounds(450,446,105,29);
             set.setBorderPainted(false);
