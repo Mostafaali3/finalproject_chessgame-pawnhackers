@@ -18,7 +18,7 @@ public class Login {
     private void initialize (){
         frame=new JFrame("PawnHackers Chess");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setSize(frameWidth,frameWidth);
+        frame.setSize(frameWidth,frameHeight-1);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setLayout(null);
@@ -33,11 +33,13 @@ public class Login {
         label.setBounds(0,0,1000,600);
 
         userName =new JTextField(10);
-        userName.setBounds(510,260,200,30);
+        panel.add(userName);
+        userName.setBounds(525,265,200,30);
         //userName.setBackground(new Color(251,215,138,255));
 
         password=new JPasswordField();
-        password.setBounds(510,322,200,30);
+        panel.add(password);
+        password.setBounds(525,327,200,30);
         //password.setBackground(new Color(251,215,138,255));
         password.setOpaque(true);
 
@@ -55,8 +57,6 @@ public class Login {
         guest.setBorderPainted(false);
 
         panel.add(label);
-        panel.add(userName);
-        panel.add(password);
         frame.setVisible(true);
         label.setIcon(image);
 

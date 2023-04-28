@@ -41,7 +41,8 @@ public class Board
         frame.setSize(Login.frameWidth, Login.frameHeight);
         frame.setVisible(true);
         frame.setResizable(false);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
         ImageIcon image = new ImageIcon("Logo.png");
         frame.setIconImage(image.getImage());
         frame.setLayout(null);
