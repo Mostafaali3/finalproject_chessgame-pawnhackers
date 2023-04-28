@@ -18,7 +18,7 @@ public class Login {
     private void initialize (){
         frame=new JFrame("PawnHackers Chess");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setSize(frameWidth,frameWidth);
+        frame.setSize(frameWidth,frameHeight);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setLayout(null);

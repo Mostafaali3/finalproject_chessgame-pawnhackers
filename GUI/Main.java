@@ -6,8 +6,8 @@ public class Main {
             @Override
             public void run() {
                 //Players frame1=new Players();
-                //Login frame2=new Login();
-                Board frame3= new Board();
+                Login frame2=new Login();
+                //Board frame3= new Board();
                 //trial frame4=new trial();
             }
         });
