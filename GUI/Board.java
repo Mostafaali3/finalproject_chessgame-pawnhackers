@@ -47,28 +47,36 @@ public class Board
         frame.setIconImage(image.getImage());
         frame.setLayout(null);
 
+
+
+
+
         name1=new JLabel("Player 1's Time:");
-        name2=new JLabel("Player 2's Time:");
-        time1=new JLabel("05:00");
-        time2=new JLabel("05:00");
+        name1.setHorizontalAlignment(SwingConstants.CENTER);
         name1.setFont(new Font("Bayon",Font.BOLD,15));
         name1.setForeground(new Color(39,69,129,255));
-        name1.setBounds(39,460,140,40);
+        name1.setBounds(35,460,145,40);
         panel.add(name1);
 
+        name2=new JLabel("Player 2's Time:");
+        name2.setHorizontalAlignment(SwingConstants.CENTER);
         name2.setFont(new Font("Bayon",Font.BOLD,15));
         name2.setForeground(new Color(39,69,129,255));
-        name2.setBounds(824,460,140,40);
+        name2.setBounds(819,460,145,40);
         panel.add(name2);
 
+        time1=new JLabel("05:00");
+        time1.setHorizontalAlignment(SwingConstants.CENTER);
         time1.setFont(new Font("Bayon",Font.BOLD,20));
         time1.setForeground(new Color(39,69,129,255));
-        time1.setBounds(83,510,76,40);
+        time1.setBounds(70,510,76,40);
         panel.add(time1);
 
+        time2=new JLabel("05:00");
+        time2.setHorizontalAlignment(SwingConstants.CENTER);
         time2.setFont(new Font("Bayon",Font.BOLD,20));
         time2.setForeground(new Color(39,69,129,255));
-        time2.setBounds(865,510,76,40);
+        time2.setBounds(854,510,76,40);
         panel.add(time2);
 
 

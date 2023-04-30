@@ -6,11 +6,11 @@ public class Main {
             @Override
             public void run() {
 
-              
 
-                Board frame1= new Board();
-                Players frame2=new Players();
-                Login frame3=new Login();
+                GameStatus frame4=new GameStatus();
+                //Board frame1= new Board();
+                //Players frame2=new Players();
+                //Login frame3=new Login();
 
 
             }

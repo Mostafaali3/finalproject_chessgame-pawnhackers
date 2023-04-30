@@ -10,7 +10,7 @@ public class Login {
     private JButton login;
     private JButton guest;
     public static int frameWidth=1012;
-    public static int frameHeight=639;
+    public static int frameHeight=636;
 
     public Login(){
         initialize();
@@ -21,7 +21,7 @@ public class Login {
 
         frame.setSize(frameWidth,frameHeight);
 
-        frame.setSize(frameWidth,frameHeight-1);
+        frame.setSize(frameWidth,frameHeight);
 
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
