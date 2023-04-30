@@ -39,12 +39,14 @@ public class Login {
         userName =new JTextField(10);
         panel.add(userName);
         userName.setBounds(525,265,200,30);
-        //userName.setBackground(new Color(251,215,138,255));
+        userName.setBackground(new Color(251,215,138,255));
+        userName.setCaretColor(new Color(39,69,129,255));
 
         password=new JPasswordField();
         panel.add(password);
         password.setBounds(525,327,200,30);
-        //password.setBackground(new Color(251,215,138,255));
+        password.setBackground(new Color(251,215,138,255));
+        password.setCaretColor(new Color(39,69,129,255));
         password.setOpaque(true);
 
         login=new JButton();
