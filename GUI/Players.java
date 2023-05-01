@@ -42,16 +42,17 @@ public class Players{
         player1 =new JTextField(10);
         panel.add(player1);
         player1.setBounds(422,244,163,24);
-        //player1.setBackground(new Color(251,215,138,255));
+        player1.setBackground(new Color(251,215,138,255));
 
         player2 =new JTextField(10);
         panel.add(player2);
         player2.setBounds(422,300,163,24);
-        //player2.setBackground(new Color(251,215,138,255));
+        player2.setBackground(new Color(251,215,138,255));
 
         timer=new JTextField();
         panel.add(timer);
         timer.setBounds(463,397,74,24);
+        timer.setBackground(new Color(251,215,138,255));
 
         set=new JButton();
         panel.add(set);
