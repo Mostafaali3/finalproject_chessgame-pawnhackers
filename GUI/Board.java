@@ -107,6 +107,7 @@ public class Board
             square.add(labelSquare);
             board.add(square);
         }
+
         board.setVisible(true);
         panel.add(board);
         label = new JLabel();
