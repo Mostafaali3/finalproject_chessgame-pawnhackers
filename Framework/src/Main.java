@@ -7,7 +7,7 @@ public class Main {
             public void run() {
 
                 System.setProperty("sun.java2d.uiScale","1.0");
-                com.formdev.flatlaf.FlatDarkLaf.install();
+                //com.formdev.flatlaf.FlatDarkLaf.install();
                 GameStatus frame4=new GameStatus();
                 Board frame1= new Board();
                 Players frame2=new Players();
