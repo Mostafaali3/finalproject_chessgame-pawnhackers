@@ -10,8 +10,10 @@ public class Bishop extends Piece{
 
     @Override
     public String toString() {
-        return "Bishop{" +
-                "color=" + color +
-                '}';
+        if(color == PieceColor.WHITE){
+            return "B";
+        }else
+            return "b";
+
     }
 }

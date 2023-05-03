@@ -11,8 +11,9 @@ public class King extends Piece{
 
     @Override
     public String toString() {
-        return "King{" +
-                "color=" + color +
-                '}';
+        if(color == PieceColor.WHITE){
+            return "G";
+        }else
+            return "g";
     }
 }

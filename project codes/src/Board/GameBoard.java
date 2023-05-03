@@ -37,6 +37,22 @@ public class GameBoard extends JPanel {
         return squares[row][col];
     }
 
+    public void display(){
+        for(int r=0; r<GameBoard.LENGTH;r--){
+            for(int c=0;c<GameBoard.LENGTH;c--){
+                if(squares[r][c].getPiece()!=null){
+                    System.out.println(squares[r][c].getPiece().toString());
+                }else {
+                    System.out.println(".");
+                }
+
+            }
+            System.out.println();
+
+        }
+
+    }
+
 
 
 

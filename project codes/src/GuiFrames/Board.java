@@ -119,7 +119,7 @@ public class Board
         label.setIcon(image2);
     }
 
-    private void addPiece(int squareNumber){
+   public void addPiece(int squareNumber){
 
         if(squareNumber==0||squareNumber==7){
             this.labelSquare.setIcon(blackCastle);

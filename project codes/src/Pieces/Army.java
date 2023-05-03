@@ -10,7 +10,6 @@ public class Army {
     public Army(){
         alivePieces = new ArrayList<Piece>();
         deadPieces = new ArrayList<Piece>();
-
     }
 
     public List<Piece> getAlivePieces() {
@@ -27,4 +26,6 @@ public class Army {
         alivePieces.remove(piece);
         deadPieces.add(piece);
     }
+
+
 }

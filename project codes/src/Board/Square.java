@@ -22,15 +22,9 @@ public class Square extends JLabel {
         this.piece = piece;
     }
 
-
-
-
-
-
-
-
-
-
+    public Piece getPiece() {
+        return piece;
+    }
 
     /* int XSquarePosition;
     int ySquarePosition;

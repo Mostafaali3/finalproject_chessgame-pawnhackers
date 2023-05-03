@@ -9,8 +9,9 @@ public class Rook extends Piece{
 
     @Override
     public String toString() {
-        return "Rook{" +
-                "color=" + color +
-                '}';
+        if(color == PieceColor.WHITE){
+            return "R";
+        }else
+            return "r";
     }
 }

@@ -9,8 +9,9 @@ public class Queen extends Piece{
 
     @Override
     public String toString() {
-        return "Queen{" +
-                "color=" + color +
-                '}';
+        if(color == PieceColor.WHITE){
+            return "Q";
+        }else
+            return "q";
     }
 }
