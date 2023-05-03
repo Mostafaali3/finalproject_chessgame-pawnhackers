@@ -5,7 +5,43 @@ import Board.Square;
 import javax.swing.*;
 
 public abstract class Piece extends ImageIcon {
-    boolean isWhite;
+    private final Square square;
+    protected final PieceColor color;
+    protected Piece(Square square,PieceColor color){
+        this.color=color;
+        this.square=square;
+        this.square.setPiece(this);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*boolean isWhite;
     boolean isKilled;
     int X;
     int Y;
@@ -43,5 +79,5 @@ public abstract class Piece extends ImageIcon {
         Y = y;
     }
 
-    public abstract boolean canMove(Square s1,Square s2);
+    public abstract boolean canMove(Square s1,Square s2);*/
 }

@@ -20,12 +20,12 @@ public class TestingBoard {
          pane.setBounds(0,0,1000,636);
          frame.add(pane);
 
-         JPanel board = new GameBoard();
+         //JPanel board = new GameBoard();
 
 
 
 
-         pane.add(board);
+         //pane.add(board);
          frame.setVisible(true);
 
     }

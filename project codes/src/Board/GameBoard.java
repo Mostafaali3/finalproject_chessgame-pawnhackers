@@ -1,14 +1,60 @@
 package Board;
 
+import GuiFrames.Board;
+import Pieces.Army;
+import Pieces.PieceColor;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class GameBoard extends JPanel implements MouseListener {
+public class GameBoard extends JPanel {
+    public static final int LENGTH=8;
+    private Army whiteArmy;
+    private Army blackArmy;
+    private Square[][] squares;
+    public GameBoard(Army whiteArmy, Army blackArmy){
+        this.whiteArmy=whiteArmy;
+        this.blackArmy=blackArmy;
+        squares = new Square[LENGTH][LENGTH];
+        for(int r=0;r<LENGTH;r++){
+            for(int c=0;c<LENGTH;c++){
+                squares[r][c] = new Square(this,r,c);
+            }
+        }
+
+    }
+
+    public Army getArmy(PieceColor color){
+        if (color==PieceColor.WHITE)
+            return whiteArmy;
+        else
+            return blackArmy;
+    }
+
+    public Square getSquare(int row , int col){
+        return squares[row][col];
+    }
 
 
-    JLabel labelSquare;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*JLabel labelSquare;
     JLabel[][] squaresXY=new JLabel[9][9];
 
     public GameBoard (){
@@ -50,36 +96,12 @@ public class GameBoard extends JPanel implements MouseListener {
             System.out.println("x="+((i%8))+"     y="+(i/8));
             add(labelSquare);
         }
-        //squaresXY[0][1].setBackground(Color.GREEN);
+        //squaresXY[0][1].setBackground(Color.GREEN);*/
 
 
 
 
-    }
+    //}
 
 
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        System.out.println("cliked");
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-
-    }
 }

@@ -5,7 +5,34 @@ import Pieces.Piece;
 import javax.swing.*;
 
 public class Square extends JLabel {
-    int XSquarePosition;
+
+    private final GameBoard board;
+    private final int col;
+    private final int row;
+    private Piece piece;
+    public Square(GameBoard board,int row,int col){
+        this.board=board;
+        this.col=col;
+        this.row=row;
+    }
+
+
+
+    public void setPiece(Piece piece) {
+        this.piece = piece;
+    }
+
+
+
+
+
+
+
+
+
+
+
+    /* int XSquarePosition;
     int ySquarePosition;
     Piece piece;
 
@@ -46,5 +73,5 @@ public class Square extends JLabel {
 
     public void setPiece(Piece piece) {
         this.piece = piece;
-    }
+    }*/
 }

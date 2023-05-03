@@ -2,14 +2,15 @@ package Pieces;
 
 import Board.Square;
 
-public class Queen extends Piece{
-    public Queen(Square square, PieceColor color) {
+public class Bishop extends Piece{
+
+    public Bishop(Square square, PieceColor color) {
         super(square, color);
     }
 
     @Override
     public String toString() {
-        return "Queen{" +
+        return "Bishop{" +
                 "color=" + color +
                 '}';
     }
