@@ -1,5 +1,6 @@
 package Main;
 
+import LoginSystem.PromotionWindow;
 import Pieces.Piece;
 
 import java.awt.event.MouseAdapter;
@@ -46,10 +47,15 @@ public class Input extends MouseAdapter {
             if(board.isValidMove(move)){
                 board.makeMove(move);
                 if(board.selectedPiece.name=="Pawn"&&board.selectedPiece.isWhite&&row==0){
-                    board.promotion(col,row);
+                    PromotionWindow promotionWindow=new PromotionWindow();
+//                    while (promotionWindow.getPieceString()==null)
+                        board.promotion(col,row,promotionWindow.getPieceString());
                 }
                 else if(board.selectedPiece.name=="Pawn"&&!board.selectedPiece.isWhite&&row==7){
-                    board.promotion(col,row);
+                    PromotionWindow promotionWindow=new PromotionWindow();
+
+//                    while (promotionWindow.getPieceString()==null)
+                        board.promotion(col,row,promotionWindow.getPieceString());
                 }
             }else {
                 board.selectedPiece.xPos = board.selectedPiece.col * board.squareSize;

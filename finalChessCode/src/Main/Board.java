@@ -1,5 +1,6 @@
 package Main;
 
+import LoginSystem.PromotionWindow;
 import Pieces.*;
 
 import javax.swing.*;
@@ -180,7 +181,7 @@ public class Board extends JPanel {
 
     }
 
-    public void promotion(int col,int row) {
+    public void promotion(int col,int row,String pieceName) {
         int i=0;
         for(Piece piece : pieceList)
         {
@@ -188,12 +189,25 @@ public class Board extends JPanel {
             if(piece.col==col&&piece.row==row)
             {
                 if(!piece.isWhite){
-                    //pieceList.remove(i);
-                    pieceList.set(i,new Queen(this,col,row,false));
+                    if(pieceName=="queen"){
+                    pieceList.set(i,new Queen(this,col,row,false));}
+                    else if(pieceName=="bishop"){
+                        pieceList.set(i,new Bishop(this,col,row,false));}
+                    else if(pieceName=="knight"){
+                        pieceList.set(i,new Knight(this,col,row,false));}
+                    else if(pieceName=="castle"){
+                        pieceList.set(i,new Castle(this,col,row,false));}
                 }
                 else{
-                    //pieceList.remove(i);
-                    pieceList.set(i,new Queen(this,col,row,true));
+
+                    if(pieceName=="queen"){
+                        pieceList.set(i,new Queen(this,col,row,true));}
+                    else if(pieceName=="bishop"){
+                        pieceList.set(i,new Bishop(this,col,row,true));}
+                    else if(pieceName=="knight"){
+                        pieceList.set(i,new Knight(this,col,row,true));}
+                    else if(pieceName=="castle"){
+                        pieceList.set(i,new Castle(this,col,row,true));}
                 }
 
             }

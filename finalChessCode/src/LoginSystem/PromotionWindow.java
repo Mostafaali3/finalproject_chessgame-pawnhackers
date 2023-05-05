@@ -1,11 +1,14 @@
 package LoginSystem;
+import javax.swing.JOptionPane;
 
 import Pieces.Queen;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class PromotionWindow {
+public class PromotionWindow implements ActionListener {
     JFrame frame;
     JLayeredPane pane;
     JLabel background;
@@ -13,6 +16,7 @@ public class PromotionWindow {
     JButton bishopButton;
     JButton knightButton;
     JButton castleButton;
+    String pieceString=null;
     private ImageIcon queen = new ImageIcon("bllack queen.png");
     private ImageIcon knight = new ImageIcon("bllack knight.png");
     private ImageIcon bishop = new ImageIcon("whitte bishop.png");
@@ -22,6 +26,9 @@ public class PromotionWindow {
 
 
     public PromotionWindow(){
+        intialize();
+
+    }
 //        frame = new JFrame();
 //        frame.setLayout(null);
 //        frame.setSize(300,300);
@@ -54,9 +61,9 @@ public class PromotionWindow {
 //
 //        frame.setVisible(true);
 
+        public void intialize(){
         frame=new JFrame("PawnHackers Chess");
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.setSize(300,320);
 
         //frame.setSize(300,300);
@@ -82,6 +89,7 @@ public class PromotionWindow {
         bishopButton.setBorderPainted(false);
         bishopButton.setFocusable(false);
         bishopButton.setContentAreaFilled(false);
+        bishopButton.addActionListener(this);
 
         queenButton = new JButton();
         queenButton.setBounds(165,93,60,60);
@@ -90,6 +98,7 @@ public class PromotionWindow {
         queenButton.setBorderPainted(false);
         queenButton.setFocusable(false);
         queenButton.setContentAreaFilled(false);
+        queenButton.addActionListener(this);
 
 
         knightButton = new JButton();
@@ -99,6 +108,7 @@ public class PromotionWindow {
         knightButton.setBorderPainted(false);
         knightButton.setFocusable(false);
         knightButton.setContentAreaFilled(false);
+        knightButton.addActionListener(this);
 
         castleButton = new JButton();
         castleButton.setBounds(165,183,60,60);
@@ -107,7 +117,7 @@ public class PromotionWindow {
         castleButton.setBorderPainted(false);
         castleButton.setFocusable(false);
         castleButton.setContentAreaFilled(false);
-
+        castleButton.addActionListener(this);
 
 
 
@@ -122,13 +132,27 @@ public class PromotionWindow {
 
 
     }
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource()==bishop){
+            pieceString="bishop";
+            frame.dispose();
+        }
+        else if(e.getSource()==queen){
+            pieceString="queen";
+            frame.dispose();
+        }
+        else if(e.getSource()==knight){
+            pieceString="bishop";
+            frame.dispose();
+        }
+        else{
+            pieceString="castle";
+            frame.dispose();
+        }
+    }
 
-
-
-
-
-
-
-
-
+    public String getPieceString() {
+        return pieceString;
+    }
 }
+
