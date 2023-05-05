@@ -180,6 +180,29 @@ public class Board extends JPanel {
 
     }
 
+    public void promotion(int col,int row) {
+        int i=0;
+        for(Piece piece : pieceList)
+        {
+
+            if(piece.col==col&&piece.row==row)
+            {
+                if(!piece.isWhite){
+                    //pieceList.remove(i);
+                    pieceList.set(i,new Queen(this,col,row,false));
+                }
+                else{
+                    //pieceList.remove(i);
+                    pieceList.set(i,new Queen(this,col,row,true));
+                }
+
+            }
+            i++;
+        }
+
+
+    }
+
     public void makeMove(Move move) {
         move.piece.col = move.newCol;
         move.piece.row = move.newRow;
