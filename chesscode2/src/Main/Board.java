@@ -180,6 +180,18 @@ public class Board extends JPanel {
 
     }
 
+//    public void setPiece(int col,int row) {
+//        for(Piece piece : pieceList)
+//        {
+//            if(piece.col==col&&piece.row==row)
+//            {
+//                pieceList.set()
+//            }
+//        }
+//        return null;
+//
+//    }
+
     public void makeMove(Move move) {
         move.piece.col = move.newCol;
         move.piece.row = move.newRow;
