@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class PromotionWindow implements ActionListener {
+public class PromotionWindow  implements ActionListener {
     JFrame frame;
     JLayeredPane pane;
     JLabel background;
@@ -16,7 +16,7 @@ public class PromotionWindow implements ActionListener {
     JButton bishopButton;
     JButton knightButton;
     JButton castleButton;
-    String pieceString=null;
+    String pieceString="bishop";
     private ImageIcon queen = new ImageIcon("bllack queen.png");
     private ImageIcon knight = new ImageIcon("bllack knight.png");
     private ImageIcon bishop = new ImageIcon("whitte bishop.png");
@@ -62,6 +62,8 @@ public class PromotionWindow implements ActionListener {
 //        frame.setVisible(true);
 
         public void intialize(){
+
+
         frame=new JFrame("PawnHackers Chess");
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.setSize(300,320);
