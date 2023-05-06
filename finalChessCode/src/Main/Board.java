@@ -1,12 +1,12 @@
 package Main;
 
+import LoginSystem.PromotionWindow;
 import Pieces.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.util.ArrayList;
-
 
 public class Board extends JPanel {
 
@@ -147,22 +147,11 @@ public class Board extends JPanel {
         for(int r=0;r<rows;r++)
             for(int c=0;c<cols;c++)
             {
-
-                if(notvalid(new Move(this,selectedPiece,c,r))) {
-
-                    g2d.setColor(new Color(208, 9, 40, 190));
-                    g2d.fillRect(c * squareSize, r * squareSize, squareSize, squareSize);
-
-                }
-
-
                 if(isValidMove(new Move(this,selectedPiece,c,r))) {
-
-                    g2d.setColor(new Color(73, 186, 25, 190));
-                    g2d.fillRect(c * squareSize, r * squareSize, squareSize, squareSize);
+                   g2d.setColor(new Color(73, 186, 25,190));
+                   g2d.fillRect(c*squareSize,r*squareSize,squareSize,squareSize);
 
                 }
-
 
 
 
@@ -178,7 +167,6 @@ public class Board extends JPanel {
 
 
     protected Piece selectedPiece;
-   
     public Piece getPiece(int col,int row) {
         for(Piece piece : pieceList)
         {
@@ -191,17 +179,49 @@ public class Board extends JPanel {
 
     }
 
-//    public void setPiece(int col,int row) {
-//        for(Piece piece : pieceList)
-//        {
-//            if(piece.col==col&&piece.row==row)
-//            {
-//                pieceList.set()
-//            }
-//        }
-//        return null;
-//
-//    }
+    public void promotion(int col,int row) {
+        int i=0;
+        String pieceName=JOptionPane.showInputDialog("Enter the piece to be promoted to");
+
+        pieceName=pieceName.toLowerCase();
+        for(Piece piece : pieceList)
+        {
+
+            if(piece.col==col&&piece.row==row)
+            {
+                if(!piece.isWhite){
+                    if(pieceName.equals("queen")){
+                    pieceList.set(i,new Queen(this,col,row,false));}
+                    else if(pieceName.equals("bishop")){
+                        pieceList.set(i,new Bishop(this,col,row,false));}
+                    else if(pieceName.equals("knight")){
+                        pieceList.set(i,new Knight(this,col,row,false));}
+                    else if(pieceName.equals("castle")){
+                        pieceList.set(i,new Castle(this,col,row,false));}
+                    else{
+                        pieceList.set(i,new Queen(this,col,row,false));}
+                }
+                else{
+
+                    if(pieceName.equals("queen")){
+                        pieceList.set(i,new Queen(this,col,row,true));}
+                    else if(pieceName.equals("bishop")){
+                        pieceList.set(i,new Bishop(this,col,row,true));}
+                    else if(pieceName.equals("knight")){
+                        pieceList.set(i,new Knight(this,col,row,true));}
+                    else if(pieceName.equals("castle")){
+                        pieceList.set(i,new Castle(this,col,row,true));}
+                    else{
+                        pieceList.set(i,new Queen(this,col,row,true));}
+                    }
+                }
+            i++;
+            }
+
+        }
+
+
+
 
     public void makeMove(Move move) {
         move.piece.col = move.newCol;
@@ -229,21 +249,6 @@ public class Board extends JPanel {
 
         return true;
     }
-//for red square
-public boolean notvalid(Move move){
-
-
-    if(!((move.capture!=null)&&(move.capture.isWhite==move.piece.isWhite))){return false;}
-    if(move.piece.movecollideswithpiece(move.newCol,move.newRow)){return false;}
-    if(!move.piece.isvalidmovement(move.newCol,move.newRow)){return false;}
-
-
-
-    return true;
-
-}
-
-
 
     public boolean sameTeam(Piece p1,Piece p2){
         if(p1==null||p2==null)
@@ -252,6 +257,7 @@ public boolean notvalid(Move move){
 
 
     }
+
 
 
 }
