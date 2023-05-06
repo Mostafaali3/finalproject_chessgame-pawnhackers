@@ -151,8 +151,6 @@ public class Board extends JPanel {
                    g2d.setColor(new Color(73, 186, 25,190));
                    g2d.fillRect(c*squareSize,r*squareSize,squareSize,squareSize);
 
-
-
                 }
 
 
@@ -184,6 +182,7 @@ public class Board extends JPanel {
     public void promotion(int col,int row) {
         int i=0;
         String pieceName=JOptionPane.showInputDialog("Enter the piece to be promoted to");
+
         pieceName=pieceName.toLowerCase();
         for(Piece piece : pieceList)
         {

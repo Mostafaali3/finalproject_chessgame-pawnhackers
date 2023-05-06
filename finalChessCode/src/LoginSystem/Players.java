@@ -81,7 +81,7 @@ public class Players implements ActionListener {
         player1.setTimer(timer);
         player2.setTimer(timer);
 
-        BoardGui board=new BoardGui();
+        BoardGui board=new BoardGui(player1,player2);
         frame.dispose();
 
     }

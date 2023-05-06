@@ -1,5 +1,6 @@
 package Main;
 
+import LoginSystem.Person;
 import Pieces.Knight;
 import Pieces.Piece;
 
@@ -23,7 +24,7 @@ public class BoardGui extends JLayeredPane {
 
 
 
-    public BoardGui() {
+    public BoardGui(Person p1, Person p2) {
 //
 
 
@@ -52,14 +53,14 @@ public class BoardGui extends JLayeredPane {
 
 
 
-        name1=new JLabel("Player 1's Time:");
+        name1=new JLabel(p1.getPlayerName()+"'s Time:");
         name1.setHorizontalAlignment(SwingConstants.CENTER);
         name1.setFont(new Font("Bayon",Font.BOLD,15));
         name1.setForeground(new Color(39,69,129,255));
         name1.setBounds(35,460,145,40);
         panel.add(name1);
 
-        name2=new JLabel("Player 2's Time:");
+        name2=new JLabel(p2.getPlayerName()+"'s Time:");
         name2.setHorizontalAlignment(SwingConstants.CENTER);
         name2.setFont(new Font("Bayon",Font.BOLD,15));
         name2.setForeground(new Color(39,69,129,255));
