@@ -1,12 +1,12 @@
 package Main;
 
+import LoginSystem.PromotionWindow;
 import Pieces.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.util.ArrayList;
-
 
 public class Board extends JPanel {
 
@@ -154,15 +154,11 @@ public class Board extends JPanel {
                     g2d.fillRect(c * squareSize, r * squareSize, squareSize, squareSize);
 
                 }
-
-
                 if(isValidMove(new Move(this,selectedPiece,c,r))) {
-
-                    g2d.setColor(new Color(73, 186, 25, 190));
-                    g2d.fillRect(c * squareSize, r * squareSize, squareSize, squareSize);
+                   g2d.setColor(new Color(73, 186, 25,190));
+                   g2d.fillRect(c*squareSize,r*squareSize,squareSize,squareSize);
 
                 }
-
 
 
 
@@ -178,7 +174,6 @@ public class Board extends JPanel {
 
 
     protected Piece selectedPiece;
-   
     public Piece getPiece(int col,int row) {
         for(Piece piece : pieceList)
         {
@@ -191,7 +186,82 @@ public class Board extends JPanel {
 
     }
 
+
+//    public void moveking(Move move  ) {
+////       Piece Castle;
+////       Piece king;
+////        if(King.iscastled(move.newCol, move.newRow)==true&&Math.abs(move.piece.col-move.newCol)==2){
+////            Castle=getPiece(7,move.piece.col);
+////            Castle.col=5;
+////
+////
+////}
+//
+//        if(Math.abs(move.piece.col-move.newCol)==2){
+//            Piece Castle;
+//            if(move.piece.col<move.newCol){
+//                Castle=getPiece(7,move.piece.row);
+//                Castle.col=5;
+//            }
+//            else{
+//
+//               Castle=getPiece(0,move.piece.row);
+//               Castle.col=3;
+//            }
+//            Castle.xPos= Castle.col*squareSize;
+//        }
+//
+//
+//    }
+
+    public void promotion(int col,int row) {
+        int i=0;
+        String pieceName=JOptionPane.showInputDialog("Enter the piece to be promoted to");
+
+        pieceName=pieceName.toLowerCase();
+        for(Piece piece : pieceList)
+        {
+
+            if(piece.col==col&&piece.row==row)
+            {
+                if(!piece.isWhite){
+                    if(pieceName.equals("queen")){
+                    pieceList.set(i,new Queen(this,col,row,false));}
+                    else if(pieceName.equals("bishop")){
+                        pieceList.set(i,new Bishop(this,col,row,false));}
+                    else if(pieceName.equals("knight")){
+                        pieceList.set(i,new Knight(this,col,row,false));}
+                    else if(pieceName.equals("castle")){
+                        pieceList.set(i,new Castle(this,col,row,false));}
+                    else{
+                        pieceList.set(i,new Queen(this,col,row,false));}
+                }
+                else{
+
+                    if(pieceName.equals("queen")){
+                        pieceList.set(i,new Queen(this,col,row,true));}
+                    else if(pieceName.equals("bishop")){
+                        pieceList.set(i,new Bishop(this,col,row,true));}
+                    else if(pieceName.equals("knight")){
+                        pieceList.set(i,new Knight(this,col,row,true));}
+                    else if(pieceName.equals("castle")){
+                        pieceList.set(i,new Castle(this,col,row,true));}
+                    else{
+                        pieceList.set(i,new Queen(this,col,row,true));}
+                    }
+                }
+            i++;
+            }
+
+        }
+
+
+
+
     public void makeMove(Move move) {
+//        if(move.piece.name.equals(("king"))){
+//            moveking((move));
+//        }
         move.piece.col = move.newCol;
         move.piece.row = move.newRow;
         move.piece.xPos = move.newCol*squareSize;
@@ -217,20 +287,19 @@ public class Board extends JPanel {
 
         return true;
     }
-//for red square
-public boolean notvalid(Move move){
+
+    //for red square
+    public boolean notvalid(Move move){
 
 
-    if(!((move.capture!=null)&&(move.capture.isWhite==move.piece.isWhite))){return false;}
-    if(move.piece.movecollideswithpiece(move.newCol,move.newRow)){return false;}
-    if(!move.piece.isvalidmovement(move.newCol,move.newRow)){return false;}
+        if(!((move.capture!=null)&&(move.piece!=null)&&(move.capture.isWhite==move.piece.isWhite))){return false;}
+        if(move.piece.movecollideswithpiece(move.newCol,move.newRow)){return false;}
+        if(!move.piece.isvalidmovement(move.newCol,move.newRow)){return false;}
+if (move.piece==move.capture){return false;}
 
+        return true;
 
-
-    return true;
-
-}
-
+    }
 
 
     public boolean sameTeam(Piece p1,Piece p2){
@@ -240,6 +309,7 @@ public boolean notvalid(Move move){
 
 
     }
+
 
 
 }
