@@ -181,41 +181,48 @@ public class Board extends JPanel {
 
     }
 
-    public void promotion(int col,int row,String pieceName) {
+    public void promotion(int col,int row) {
         int i=0;
+        String pieceName=JOptionPane.showInputDialog("Enter the piece to be promoted to");
+        pieceName=pieceName.toLowerCase();
         for(Piece piece : pieceList)
         {
 
             if(piece.col==col&&piece.row==row)
             {
                 if(!piece.isWhite){
-                    if(pieceName=="queen"){
+                    if(pieceName.equals("queen")){
                     pieceList.set(i,new Queen(this,col,row,false));}
-                    else if(pieceName=="bishop"){
+                    else if(pieceName.equals("bishop")){
                         pieceList.set(i,new Bishop(this,col,row,false));}
-                    else if(pieceName=="knight"){
+                    else if(pieceName.equals("knight")){
                         pieceList.set(i,new Knight(this,col,row,false));}
-                    else if(pieceName=="castle"){
+                    else if(pieceName.equals("castle")){
                         pieceList.set(i,new Castle(this,col,row,false));}
+                    else{
+                        pieceList.set(i,new Queen(this,col,row,false));}
                 }
                 else{
 
-                    if(pieceName=="queen"){
+                    if(pieceName.equals("queen")){
                         pieceList.set(i,new Queen(this,col,row,true));}
-                    else if(pieceName=="bishop"){
+                    else if(pieceName.equals("bishop")){
                         pieceList.set(i,new Bishop(this,col,row,true));}
-                    else if(pieceName=="knight"){
+                    else if(pieceName.equals("knight")){
                         pieceList.set(i,new Knight(this,col,row,true));}
-                    else if(pieceName=="castle"){
+                    else if(pieceName.equals("castle")){
                         pieceList.set(i,new Castle(this,col,row,true));}
+                    else{
+                        pieceList.set(i,new Queen(this,col,row,true));}
+                    }
                 }
-
-            }
             i++;
+            }
+
         }
 
 
-    }
+
 
     public void makeMove(Move move) {
         move.piece.col = move.newCol;
