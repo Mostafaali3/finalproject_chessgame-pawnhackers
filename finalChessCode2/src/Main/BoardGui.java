@@ -56,13 +56,13 @@ public class BoardGui extends JLayeredPane {
 
         deadWhite = new JLabel();
         deadWhite.setBounds(48, 153, 120, 250);
-//        deadWhite.setLayout(new GridLayout(5, 3));
+        deadWhite.setLayout(new GridLayout(5, 3));
         deadWhite.setForeground(Color.BLACK);
         panel.add(deadWhite);
 
         deadBlack = new JLabel();
         deadBlack.setBounds(832, 153, 120, 250);
-//        deadBlack.setLayout(new GridLayout(5, 3));
+        deadBlack.setLayout(new GridLayout(5, 3));
         deadBlack.setForeground(Color.BLACK);
         panel.add(deadBlack);
 
