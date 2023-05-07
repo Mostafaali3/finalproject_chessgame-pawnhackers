@@ -181,8 +181,12 @@ public class Board extends JPanel {
 
     public void promotion(int col,int row) {
         int i=0;
-        String pieceName=JOptionPane.showInputDialog("Enter the piece to be promoted to");
-
+        String pieceName=JOptionPane.showInputDialog("Enter the piece to be promoted to:");
+//        PromotionWindow promotionWindow=new PromotionWindow();
+//        String pieceName=promotionWindow.getPieceString();
+//        while (pieceName.equals("am")){
+//            pieceName=promotionWindow.getPieceString();
+//        }
         pieceName=pieceName.toLowerCase();
         for(Piece piece : pieceList)
         {
