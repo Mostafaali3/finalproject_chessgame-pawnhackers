@@ -1,5 +1,6 @@
 package Main;
 
+import LoginSystem.MyButton;
 import LoginSystem.Person;
 import Pieces.Knight;
 import Pieces.Piece;
@@ -20,10 +21,27 @@ public class BoardGui extends JLayeredPane {
     private JLabel name1;
     private JLabel name2;
     private JPanel newPanel;
-    private JLabel deadWhite;
+    private JPanel deadWhite;
     private JLabel deadBlack;
     private int counterBlack;
     private int counterWhite;
+
+    private MyButton whiteDead1= new MyButton(0);
+    private MyButton whiteDead2=new MyButton(1);
+    private MyButton whiteDead3=new MyButton(2);
+    private MyButton whiteDead4=new MyButton(3);
+    private MyButton whiteDead5=new MyButton(4);
+    private MyButton whiteDead6=new MyButton(5);
+    private MyButton whiteDead7=new MyButton(6);
+    private MyButton whiteDead8=new MyButton(7);
+    private MyButton whiteDead9=new MyButton(8);
+    private MyButton whiteDead10=new MyButton(9);
+    private MyButton whiteDead11=new MyButton(10);
+    private MyButton whiteDead12=new MyButton(11);
+    private MyButton whiteDead13=new MyButton(12);
+    private MyButton whiteDead14=new MyButton(13);
+    private MyButton whiteDead15=new MyButton(14);
+    ArrayList<MyButton> deadWhiteList = new ArrayList<>();
 
 
     public BoardGui(Person p1, Person p2) {
@@ -54,12 +72,45 @@ public class BoardGui extends JLayeredPane {
         newPanel.add(board1);
         panel.add(newPanel);
 
-        deadWhite = new JLabel();
+//        deadWhite = new JLabel();
+//        deadWhite.setBounds(48, 153, 120, 250);
+////        deadWhite.setLayout(new GridLayout(5, 3));
+//        deadWhite.setForeground(Color.BLACK);
+//        panel.add(deadWhite);
+/*-----------------------------------------------------------------------*/
+        deadWhite = new JPanel();
         deadWhite.setBounds(48, 153, 120, 250);
+        deadWhite.setLayout(new GridLayout(5,3));
 //        deadWhite.setLayout(new GridLayout(5, 3));
         deadWhite.setForeground(Color.BLACK);
+        deadWhiteList.add(whiteDead1);
+        deadWhiteList.add(whiteDead2);
+        deadWhiteList.add(whiteDead3);
+        deadWhiteList.add(whiteDead4);
+        deadWhiteList.add(whiteDead5);
+        deadWhiteList.add(whiteDead6);
+        deadWhiteList.add(whiteDead7);
+        deadWhiteList.add(whiteDead8);
+        deadWhiteList.add(whiteDead9);
+        deadWhiteList.add(whiteDead10);
+        deadWhiteList.add(whiteDead11);
+        deadWhiteList.add(whiteDead12);
+        deadWhiteList.add(whiteDead13);
+        deadWhiteList.add(whiteDead14);
+        deadWhiteList.add(whiteDead15);
+        for(MyButton myButton : deadWhiteList){
+            deadWhite.add(myButton);
+
+        }
+
+
+
+
+
+
         panel.add(deadWhite);
 
+/*------------------------------------------------------------------------*/
         deadBlack = new JLabel();
         deadBlack.setBounds(832, 153, 120, 250);
 //        deadBlack.setLayout(new GridLayout(5, 3));
@@ -113,55 +164,102 @@ public class BoardGui extends JLayeredPane {
 //                deadWhite.setText(deadWhite.getText() + "<html>My cool App <br> Buy it now</html>");
 //            }
             if (name.equals("Bishop")) {
-//                deadWhite.setDisplayedMnemonicIndex(counterWhite);
-                deadWhite.setText(deadWhite.getText() + " ♗ ");
+                for (MyButton myButton : deadWhiteList)
+                {
+                    if (myButton.index==counterWhite){
+                        ImageIcon whiteDeadBishop=new ImageIcon("white bishop 1.png");
+                        myButton.setIcon(whiteDeadBishop);
+                    }
+                }
                 this.counterWhite++;
-            }
-            if (name.equals("Castle")) {
-//                deadWhite.setDisplayedMnemonicIndex(counterWhite);
-                deadWhite.setText(deadWhite.getText() + " ♖ ");
+            }if (name.equals("Castle")) {
+                for (MyButton myButton : deadWhiteList)
+                {
+                    if (myButton.index==counterWhite){
+                        ImageIcon whiteDeadCastle=new ImageIcon("white castle 1.png");
+                        myButton.setIcon(whiteDeadCastle);
+                    }
+                }
                 this.counterWhite++;
-            }
-            if (name.equals("Queen")) {
-//                deadWhite.setDisplayedMnemonicIndex(counterWhite);
-                deadWhite.setText(deadWhite.getText() + " ♕ ");
+            }if (name.equals("Queen")) {
+                for (MyButton myButton : deadWhiteList)
+                {
+                    if (myButton.index==counterWhite){
+                        ImageIcon whiteDeadQueen=new ImageIcon("white queen 1.png");
+                        myButton.setIcon(whiteDeadQueen);
+                    }
+                }
+                this.counterWhite++;
+            }if (name.equals("Knight")) {
+                for (MyButton myButton : deadWhiteList)
+                {
+                    if (myButton.index==counterWhite){
+                        ImageIcon whiteDeadKnight=new ImageIcon("white knight 1.png");
+                        myButton.setIcon(whiteDeadKnight);
+
+                    }
+                }
                 this.counterWhite++;
             }
             if (name.equals("Pawn")) {
-//                deadWhite.setDisplayedMnemonicIndex(counterWhite);
-                deadWhite.setText(deadWhite.getText() + " ♙ ");
+                for (MyButton myButton : deadWhiteList)
+                {
+                    if (myButton.index==counterWhite){
+                        ImageIcon whiteDeadPawn=new ImageIcon("white pawn 1.png");
+                        myButton.setIcon(whiteDeadPawn);
+                    }
+                }
                 this.counterWhite++;
             }
-            if (name.equals("Knight")) {
+
+
 //                deadWhite.setDisplayedMnemonicIndex(counterWhite);
-                deadWhite.setText(deadWhite.getText() + " ♘ ");
-
+//                deadWhite.setText(deadWhite.getText() + " ♙ ");
+//                this.counterWhite++;
             }
+//            if (name.equals("Knight")) {
+////                deadWhite.setDisplayedMnemonicIndex(counterWhite);
+//                deadWhite.setText(deadWhite.getText() + " ♘ ");
+//
+//            }
         }
-            else {
-                if (name.equals("Bishop")) {
-//                deadBlack.setDisplayedMnemonicIndex(counterBlack);
-                    deadBlack.setText(deadBlack.getText() + " ♗ ");
-                    this.counterBlack++;
-                }
-                if (name.equals("Castle")) {
-//                deadBlack.setDisplayedMnemonicIndex(counterBlack);
-                    deadBlack.setText(deadBlack.getText() + " ♖ ");
-                    this.counterBlack++;
-                }
-                if (name.equals("Queen")) {
-//                deadBlack.setDisplayedMnemonicIndex(counterBlack);
-                    deadBlack.setText(deadBlack.getText() + " ♕ ");
-                    this.counterBlack++;
-                }
-                if (name.equals("Pawn")) {
-//                deadBlack.setDisplayedMnemonicIndex(counterBlack);
-                    deadBlack.setText(deadBlack.getText() + " ♙ ");
-                    this.counterBlack++;
-                }
-                if (name.equals("Knight")) {
-//                deadBlack.setDisplayedMnemonicIndex(counterBlack);
-                    deadBlack.setText(deadBlack.getText() + " ♘ ");
+//            else {
+//                if (name.equals("Bishop")) {
+////                deadBlack.setDisplayedMnemonicIndex(counterBlack);
+//                    deadBlack.setText(deadBlack.getText() + " ♗ ");
+//                    this.counterBlack++;
+//                }
+//                if (name.equals("Castle")) {
+////                deadBlack.setDisplayedMnemonicIndex(counterBlack);
+//                    deadBlack.setText(deadBlack.getText() + " ♖ ");
+//                    this.counterBlack++;
+//                }
+//                if (name.equals("Queen")) {
+////                deadBlack.setDisplayedMnemonicIndex(counterBlack);
+//                    deadBlack.setText(deadBlack.getText() + " ♕ ");
+//                    this.counterBlack++;
+//                }
+//                if (name.equals("Pawn")) {
+////                deadBlack.setDisplayedMnemonicIndex(counterBlack);
+//                    deadBlack.setText(deadBlack.getText() + " ♙ ");
+//                    this.counterBlack++;
+//                }
+//                if (name.equals("Knight")) {
+////                deadBlack.setDisplayedMnemonicIndex(counterBlack);
+//                    deadBlack.setText(deadBlack.getText() + " ♘ ");
+//
+//                }
+//    }}
 
-                }
-    }}}
+
+
+
+
+
+
+
+
+
+
+
+}
