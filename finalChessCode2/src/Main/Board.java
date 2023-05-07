@@ -158,11 +158,10 @@ public class Board extends JPanel {
 //
 //    }
 
-    public void promotion(int col,int row) {
+    public void promotion(int col,int row,String pieceName) {
         int i=0;
-        String pieceName=JOptionPane.showInputDialog("Enter the piece to be promoted to");
-
-        pieceName=pieceName.toLowerCase();
+//        String pieceName=JOptionPane.showInputDialog("Enter the piece to be promoted to");
+//        pieceName=pieceName.toLowerCase();
         for(Piece piece : pieceList)
         {
 
@@ -170,7 +169,7 @@ public class Board extends JPanel {
             {
                 if(!piece.isWhite){
                     if(pieceName.equals("queen")){
-                    pieceList.set(i,new Queen(this,col,row,false));}
+                        pieceList.set(i,new Queen(this,col,row,false));}
                     else if(pieceName.equals("bishop")){
                         pieceList.set(i,new Bishop(this,col,row,false));}
                     else if(pieceName.equals("knight")){
@@ -192,12 +191,14 @@ public class Board extends JPanel {
                         pieceList.set(i,new Castle(this,col,row,true));}
                     else{
                         pieceList.set(i,new Queen(this,col,row,true));}
-                    }
                 }
-            i++;
             }
-
+            i++;
         }
+
+    }
+
+
 
 
 

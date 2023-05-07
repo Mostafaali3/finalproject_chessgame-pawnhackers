@@ -16,7 +16,7 @@ public class Input extends MouseAdapter {
         this.board=board;
     }
 
-public Piece pieceXY;
+
     @Override
     public void mousePressed(MouseEvent e) {
         int col = e.getX()/board.squareSize;
@@ -48,15 +48,16 @@ public Piece pieceXY;
             if(board.isValidMove(move)){
                 board.makeMove(move);
                 if(board.selectedPiece.name=="Pawn"&&board.selectedPiece.isWhite&&row==0){
+                    PromotionWindow promotionWindow=new PromotionWindow(col,row,board);
 //                    pieceString= JOptionPane.showInputDialog("Enter the piece to be promoted to:");
 //                    while (promotionWindow.getPieceString()==null)
-                        board.promotion(col,row);
+//                        board.promotion(col,row);
                 }
                 else if(board.selectedPiece.name=="Pawn"&&!board.selectedPiece.isWhite&&row==7){
-//                    PromotionWindow promotionWindow=new PromotionWindow();
+                    PromotionWindow promotionWindow=new PromotionWindow(col,row,board);
 
 //                    while (promotionWindow.getPieceString()==null)
-                        board.promotion(col,row);
+//                        board.promotion(col,row);
                 }
             }else {
                 board.selectedPiece.xPos = board.selectedPiece.col * board.squareSize;

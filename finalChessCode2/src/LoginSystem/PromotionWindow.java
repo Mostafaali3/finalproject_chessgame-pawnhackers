@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import Main.*;
 
 public class PromotionWindow  implements ActionListener {
     JFrame frame;
@@ -16,16 +17,21 @@ public class PromotionWindow  implements ActionListener {
     JButton bishopButton;
     JButton knightButton;
     JButton castleButton;
-    String pieceString="bishop";
+    String pieceString=null;
+    Board board;
     private ImageIcon queen = new ImageIcon("bllack queen.png");
     private ImageIcon knight = new ImageIcon("bllack knight.png");
     private ImageIcon bishop = new ImageIcon("whitte bishop.png");
     private ImageIcon castle = new ImageIcon("whitte castle.png");
     private ImageIcon backgroundImage = new ImageIcon("promotion background.png");
+    private int col;
+    private int row;
 
 
-
-    public PromotionWindow(){
+    public PromotionWindow(int col,int row,Board board){
+        this.col=col;
+        this.row=row;
+        this.board=board;
         intialize();
 
     }
@@ -61,7 +67,7 @@ public class PromotionWindow  implements ActionListener {
 //
 //        frame.setVisible(true);
 
-        public void intialize(){
+    public void intialize(){
 
 
         frame=new JFrame("PawnHackers Chess");
@@ -135,20 +141,28 @@ public class PromotionWindow  implements ActionListener {
 
     }
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource()==bishop){
+        if(e.getSource()==bishopButton){
             pieceString="bishop";
+            board.promotion(col,row,pieceString);
+            board.repaint();
             frame.dispose();
         }
-        else if(e.getSource()==queen){
+        else if(e.getSource()==queenButton){
             pieceString="queen";
+            board.promotion(col,row,pieceString);
+            board.repaint();
             frame.dispose();
         }
-        else if(e.getSource()==knight){
-            pieceString="bishop";
+        else if(e.getSource()==knightButton){
+            pieceString="knight";
+            board.promotion(col,row,pieceString);
+            board.repaint();
             frame.dispose();
         }
         else{
             pieceString="castle";
+            board.promotion(col,row,pieceString);
+            board.repaint();
             frame.dispose();
         }
     }

@@ -16,7 +16,7 @@ public class Main {
 
 
                 System.setProperty("sun.java2d.uiScale","1.0");
-                com.formdev.flatlaf.FlatDarkLaf.install();
+//                com.formdev.flatlaf.FlatDarkLaf.install();
                 IDandPasswords idandPasswords = new IDandPasswords();
 
                 Login loginPage = new Login(idandPasswords.getLoginInfo());
