@@ -1,25 +1,27 @@
 package Main;
 
+import LoginSystem.PromotionWindow;
 import Pieces.Piece;
 
+import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 public class Input extends MouseAdapter {
-
+    String pieceString=null;
     Board board;
     public Input(Board board){
         this.board=board;
     }
-    public Piece pieceXY;
 
+public Piece pieceXY;
     @Override
     public void mousePressed(MouseEvent e) {
         int col = e.getX()/board.squareSize;
         int row = e.getY()/board.squareSize;
-         pieceXY= board.getPiece(col,row);
+        Piece pieceXY= board.getPiece(col,row);
         if(pieceXY!=null)
         {
             board.selectedPiece = pieceXY;
@@ -45,6 +47,17 @@ public class Input extends MouseAdapter {
             Move move = new Move(board,board.selectedPiece,col,row);
             if(board.isValidMove(move)){
                 board.makeMove(move);
+                if(board.selectedPiece.name=="Pawn"&&board.selectedPiece.isWhite&&row==0){
+//                    pieceString= JOptionPane.showInputDialog("Enter the piece to be promoted to:");
+//                    while (promotionWindow.getPieceString()==null)
+                        board.promotion(col,row);
+                }
+                else if(board.selectedPiece.name=="Pawn"&&!board.selectedPiece.isWhite&&row==7){
+//                    PromotionWindow promotionWindow=new PromotionWindow();
+
+//                    while (promotionWindow.getPieceString()==null)
+                        board.promotion(col,row);
+                }
             }else {
                 board.selectedPiece.xPos = board.selectedPiece.col * board.squareSize;
                 board.selectedPiece.yPos = board.selectedPiece.row * board.squareSize;

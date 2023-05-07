@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.util.ArrayList;
 
+
 public class Board extends JPanel {
 
 
@@ -146,13 +147,22 @@ public class Board extends JPanel {
         for(int r=0;r<rows;r++)
             for(int c=0;c<cols;c++)
             {
-                if(isValidMove(new Move(this,selectedPiece,c,r))) {
-                   g2d.setColor(new Color(73, 186, 25,190));
-                   g2d.fillRect(c*squareSize,r*squareSize,squareSize,squareSize);
 
+                if(notvalid(new Move(this,selectedPiece,c,r))) {
 
+                    g2d.setColor(new Color(208, 9, 40, 190));
+                    g2d.fillRect(c * squareSize, r * squareSize, squareSize, squareSize);
 
                 }
+
+
+                if(isValidMove(new Move(this,selectedPiece,c,r))) {
+
+                    g2d.setColor(new Color(73, 186, 25, 190));
+                    g2d.fillRect(c * squareSize, r * squareSize, squareSize, squareSize);
+
+                }
+
 
 
 
@@ -168,6 +178,7 @@ public class Board extends JPanel {
 
 
     protected Piece selectedPiece;
+   
     public Piece getPiece(int col,int row) {
         for(Piece piece : pieceList)
         {
@@ -218,6 +229,21 @@ public class Board extends JPanel {
 
         return true;
     }
+//for red square
+public boolean notvalid(Move move){
+
+
+    if(!((move.capture!=null)&&(move.capture.isWhite==move.piece.isWhite))){return false;}
+    if(move.piece.movecollideswithpiece(move.newCol,move.newRow)){return false;}
+    if(!move.piece.isvalidmovement(move.newCol,move.newRow)){return false;}
+
+
+
+    return true;
+
+}
+
+
 
     public boolean sameTeam(Piece p1,Piece p2){
         if(p1==null||p2==null)
@@ -226,7 +252,6 @@ public class Board extends JPanel {
 
 
     }
-
 
 
 }
