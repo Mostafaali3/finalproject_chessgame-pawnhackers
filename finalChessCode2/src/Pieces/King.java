@@ -31,10 +31,34 @@ public class King extends Piece {
 
 
     }
+    public boolean isValidMoveForAnotherPiece(int col, int row){
+
+        for(Piece piece : this.board.pieceList)
+        {
+            if(!board.sameTeam(this,piece))
+            {
+                if(piece.isvalidmovement(col,row)&&!piece.movecollideswithpiece(col,row)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+
+
+
     public boolean isvalidmovement(int col, int row){
       int x =  Math.abs( this.col-col);
         int y=Math.abs(this.row-row);
-        return x+y==1|| (x==1&&y==1);}
+        //&&!board.isCheckMated(col,row,this)
+        if ((x+y==1|| (x==1&&y==1))){
+            if(this.isValidMoveForAnotherPiece(col,row)){
+                return false;
+            }
+            return true;
+        }
+        return false;}
 //||iscastled( col, row);}
 
 //    Castle Castle;
