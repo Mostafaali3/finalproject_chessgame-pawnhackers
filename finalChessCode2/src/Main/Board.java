@@ -253,27 +253,27 @@ if (move.piece==move.capture){return false;}
 
     }
 
-    public boolean isCheckMated(int col,int row,Piece king){
-        for(Piece piece : pieceList)
-        {
-            if(!this.sameTeam(king,piece))
-            {
-                if(piece.isvalidmovement(col,row)&&((king.col-1==col&&king.row+1==row))){
-                    return true;
-                    //&&((king.col+1==col&&king.row+1==row)||(king.col-1==col&&king.row+1==row)||(king.col-1==col&&king.row-1==row)||(king.col+1==col&&king.row-1==row))
-                    //(king.col==col||king.col+1==col||king.col-1==col)&&(king.row==row||king.row+1==row||king.row-1==row)&&!((king.row==row)&&(king.col==col))
-                }
-                if (piece.isvalidmovement(col,row)&&((king.col==col&&king.row+1==row))){
-                    return true;
-                }
-
-            }
-        }
-        return false;
-
-
-
-    }
+//    public boolean isCheckMated(int col,int row,Piece king){
+//        for(Piece piece : pieceList)
+//        {
+//            if(!this.sameTeam(king,piece))
+//            {
+//                if(piece.isvalidmovement(col,row)&&((king.col-1==col&&king.row+1==row))){
+//                    return true;
+//                    //&&((king.col+1==col&&king.row+1==row)||(king.col-1==col&&king.row+1==row)||(king.col-1==col&&king.row-1==row)||(king.col+1==col&&king.row-1==row))
+//                    //(king.col==col||king.col+1==col||king.col-1==col)&&(king.row==row||king.row+1==row||king.row-1==row)&&!((king.row==row)&&(king.col==col))
+//                }
+//                if (piece.isvalidmovement(col,row)&&((king.col==col&&king.row+1==row))){
+//                    return true;
+//                }
+//
+//            }
+//        }
+//        return false;
+//
+//
+//
+//    }
 
 
 
