@@ -23,20 +23,22 @@ public class Board extends JPanel {
 //    private JLabel name2;
 
 
-
-
-
-
      public ArrayList<Piece> pieceList= new ArrayList<>();
+     public ArrayList<Piece> eatenWhite =new ArrayList<>();
+     public ArrayList<Piece> eatenBlack =new ArrayList<>();
+     BoardGui boardGui;
+
     Input input =new Input(this);
     public int squareSize = 60;
     int rows=8;
     int cols = 8;
-    public Board(){
+    public Board(BoardGui boardGui){
         this.setPreferredSize(new Dimension(cols*squareSize,rows*squareSize));
         this.addMouseListener(input);
         this.addMouseMotionListener(input);
+        this.boardGui=boardGui;
         addPieces();
+
 
 
 
@@ -201,8 +203,6 @@ public class Board extends JPanel {
 
 
 
-
-
     public void makeMove(Move move) {
 //        if(move.piece.name.equals(("king"))){
 //            moveking((move));
@@ -218,7 +218,16 @@ public class Board extends JPanel {
     }
 
     public void capture(Move move){
+        if(move.capture.isWhite){
+            eatenWhite.add(move.capture);
+            boardGui.displayDeadPieces(move.capture.isWhite,move.capture.name);
+        }
+        else{
+            eatenBlack.add(move.capture);
+            boardGui.displayDeadPieces(move.capture.isWhite,move.capture.name);
+        }
         pieceList.remove(move.capture);
+
     }
     public boolean isValidMove(Move move){
         if (sameTeam(move.piece,move.capture))
