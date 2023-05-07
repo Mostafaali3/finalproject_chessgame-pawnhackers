@@ -218,7 +218,8 @@ public class Board extends JPanel {
     }
 
     public void capture(Move move){
-        if(move.capture.isWhite){
+        if (move.capture!=null){
+                    if(move.capture.isWhite){
             eatenWhite.add(move.capture);
             boardGui.displayDeadPieces(move.capture.isWhite,move.capture.name);
         }
@@ -226,6 +227,8 @@ public class Board extends JPanel {
             eatenBlack.add(move.capture);
             boardGui.displayDeadPieces(move.capture.isWhite,move.capture.name);
         }
+        }
+
         pieceList.remove(move.capture);
 
     }
