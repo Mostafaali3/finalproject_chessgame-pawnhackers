@@ -2,22 +2,25 @@ package Main;
 
 import LoginSystem.MyButton;
 import LoginSystem.Person;
+//import LoginSystem.PersonalTimer;
 import Pieces.Knight;
 import Pieces.Piece;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class BoardGui extends JLayeredPane {
-    private JFrame frame;
-    private JLayeredPane panel;
+    protected JFrame frame;
+    protected JLayeredPane panel;
     private JLabel label;
-    private JPanel board;
     private JLabel square;
     private JLabel labelSquare;
-    private JLabel time1;
-    private JLabel time2;
+    public JLabel time1;
+    public JLabel time2;
     private JLabel name1;
     private JLabel name2;
     private JPanel newPanel;
@@ -25,7 +28,16 @@ public class BoardGui extends JLayeredPane {
     private JPanel deadBlack;
     private int counterBlack;
     private int counterWhite;
+    public Timer timer1;
+    public Timer timer2;
+    private int second,minute;
+    private DecimalFormat dFormat=new DecimalFormat("00");
+    private String ddSecond;
+    private String  ddMinute;
 
+    private Board board1;
+    private Person p1;
+    private Person p2;
     private MyButton whiteDead1= new MyButton(0);
     private MyButton whiteDead2=new MyButton(1);
     private MyButton whiteDead3=new MyButton(2);
@@ -50,6 +62,8 @@ public class BoardGui extends JLayeredPane {
 
         counterBlack = 0;
         counterWhite = 0;
+        this.p1=p1;
+        this.p2=p2;
 
         frame = new JFrame("PawnHackers Chess");
         panel = new JLayeredPane();
@@ -67,6 +81,7 @@ public class BoardGui extends JLayeredPane {
 
         Board board1 = new Board(this);
         //panel.add(board1);
+        this.board1=board1;
 
         newPanel = new JPanel();
         newPanel.setBounds(260, 60, 480, 480);
@@ -143,19 +158,30 @@ public class BoardGui extends JLayeredPane {
         name2.setBounds(819, 460, 145, 40);
         panel.add(name2);
 
-        time1 = new JLabel("05:00");
+        time1 = new JLabel();
         time1.setHorizontalAlignment(SwingConstants.CENTER);
         time1.setFont(new Font("Bayon", Font.BOLD, 20));
         time1.setForeground(new Color(39, 69, 129, 255));
         time1.setBounds(70, 510, 76, 40);
         panel.add(time1);
 
-        time2 = new JLabel("05:00");
+        time2 = new JLabel();
         time2.setHorizontalAlignment(SwingConstants.CENTER);
         time2.setFont(new Font("Bayon", Font.BOLD, 20));
         time2.setForeground(new Color(39, 69, 129, 255));
         time2.setBounds(854, 510, 76, 40);
         panel.add(time2);
+//        PersonalTimer timer1=new PersonalTimer(p1.getTimer(), this);
+//        PersonalTimer timer2=new PersonalTimer(p1.getTimer(), this);
+//        time1.setText(timer1.getDdMinute()+":"+timer2.getDdSecond());
+//        time2.setText(timer2.getDdMinute()+":"+timer2.getDdSecond());
+        second=0;
+        minute=p1.getTimer();
+        time1.setText("0"+p1.getTimer()+":00");
+        time2.setText("0"+p1.getTimer()+":00");
+        timer();
+        timer1.start();
+        timer2.stop();
 
 
         label = new JLabel();
@@ -281,8 +307,67 @@ public class BoardGui extends JLayeredPane {
 
 
         }
+        public void timer(){
+        timer1=new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                second--;
+                ddSecond=dFormat.format(second);
+                ddMinute=dFormat.format(minute);
+                time1.setText(ddMinute+":"+ddSecond);
+
+
+                    if(second==-1){
+                        second=59;
+                        minute--;
+                    ddSecond=dFormat.format(second);
+                    ddMinute=dFormat.format(minute);
+                    time1.setText(ddMinute+":"+ddSecond);
+
+                }
+//                if(board1.isValidMove(move)&&count%2==0&&board.selectedPiece.isWhite){
+//
+//                }
+                if(minute==0 && second==0){
+                    timer1.stop();
+                }
+
+            }
+        });
+            timer2=new Timer(1000, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    second--;
+                    ddSecond=dFormat.format(second);
+                    ddMinute=dFormat.format(minute);
+                    time2.setText(ddMinute+":"+ddSecond);
+
+                    if(second==-1){
+                        second=59;
+                        minute--;
+                        ddSecond=dFormat.format(second);
+                        ddMinute=dFormat.format(minute);
+                        time1.setText(ddMinute+":"+ddSecond);
+                        time2.setText(ddMinute+":"+ddSecond);
+                    }
+                    if(minute==0 && second==0){
+                        timer2.stop();
+                    }
+
+                }
+            });
+
+
+
+
 
         }
+
+
+
+
+
+}
 //            else {
 //                if (name.equals("Bishop")) {
 ////                deadBlack.setDisplayedMnemonicIndex(counterBlack);
