@@ -22,7 +22,7 @@ public class BoardGui extends JLayeredPane {
     private JLabel name2;
     private JPanel newPanel;
     private JPanel deadWhite;
-    private JLabel deadBlack;
+    private JPanel deadBlack;
     private int counterBlack;
     private int counterWhite;
 
@@ -41,7 +41,9 @@ public class BoardGui extends JLayeredPane {
     private MyButton whiteDead13=new MyButton(12);
     private MyButton whiteDead14=new MyButton(13);
     private MyButton whiteDead15=new MyButton(14);
+    private MyButton blackDead;
     ArrayList<MyButton> deadWhiteList = new ArrayList<>();
+    ArrayList<MyButton> deadBlackList = new ArrayList<>();
 
 
     public BoardGui(Person p1, Person p2) {
@@ -111,9 +113,18 @@ public class BoardGui extends JLayeredPane {
         panel.add(deadWhite);
 
 /*------------------------------------------------------------------------*/
-        deadBlack = new JLabel();
+        deadBlack = new JPanel();
         deadBlack.setBounds(832, 153, 120, 250);
-//        deadBlack.setLayout(new GridLayout(5, 3));
+        deadBlack.setLayout(new GridLayout(5, 3));
+
+        for(int i=0;i<15;i++){
+            deadBlackList.add(new MyButton(i));
+        }
+        for(MyButton myButton : deadBlackList)
+        {
+            deadBlack.add(myButton);
+        }
+
         deadBlack.setForeground(Color.BLACK);
         panel.add(deadBlack);
 
@@ -212,16 +223,65 @@ public class BoardGui extends JLayeredPane {
                 this.counterWhite++;
             }
 
+        }
+        else {
+            if (name.equals("Pawn")) {
+                for (MyButton myButton : deadBlackList)
+                {
+                    if (myButton.index==counterBlack){
+                        ImageIcon BlackDeadPawn=new ImageIcon("black pawn 1.png");
+                        myButton.setIcon(BlackDeadPawn);
+                    }
+                }
+                this.counterBlack++;
+            }if (name.equals("Bishop")) {
+                for (MyButton myButton : deadBlackList)
+                {
+                    if (myButton.index==counterBlack){
+                        ImageIcon BlackDeadBishop=new ImageIcon("black bishop 1.png");
+                        myButton.setIcon(BlackDeadBishop);
+                    }
+                }
+                this.counterBlack++;
+            }if (name.equals("Knight")) {
+                for (MyButton myButton : deadBlackList)
+                {
+                    if (myButton.index==counterBlack){
+                        ImageIcon BlackDeadKnight=new ImageIcon("black knight 1.png");
+                        myButton.setIcon(BlackDeadKnight);
 
-//                deadWhite.setDisplayedMnemonicIndex(counterWhite);
-//                deadWhite.setText(deadWhite.getText() + " ♙ ");
-//                this.counterWhite++;
+                    }
+                }
+                this.counterBlack++;
+            }if (name.equals("Queen")) {
+                for (MyButton myButton : deadBlackList)
+                {
+                    if (myButton.index==counterBlack){
+                        ImageIcon BlackDeadQueen=new ImageIcon("black queen 1.png");
+                        myButton.setIcon(BlackDeadQueen);
+
+                    }
+                }
+                this.counterBlack++;
+            }if (name.equals("Castle")) {
+                for (MyButton myButton : deadBlackList)
+                {
+                    if (myButton.index==counterBlack){
+                        ImageIcon BlackDeadCastle=new ImageIcon("black castle 1.png");
+                        myButton.setIcon(BlackDeadCastle);
+
+                    }
+                }
+                this.counterBlack++;
             }
-//            if (name.equals("Knight")) {
-////                deadWhite.setDisplayedMnemonicIndex(counterWhite);
-//                deadWhite.setText(deadWhite.getText() + " ♘ ");
-//
-//            }
+        }
+
+
+
+
+
+        }
+
         }
 //            else {
 //                if (name.equals("Bishop")) {
@@ -262,4 +322,3 @@ public class BoardGui extends JLayeredPane {
 
 
 
-}
