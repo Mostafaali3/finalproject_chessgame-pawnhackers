@@ -33,5 +33,5 @@ public class Bishop extends Piece {
 
     public boolean isvalidmovement(int col, int row){
 
-        return (Math.abs(this.col-col)==1&&(this.row-row==0))||(Math.abs(this.col-col)==Math.abs(this.row-row)&& Math.abs(this.row-row)<=3);}
+        return ((Math.abs(this.col-col)==1&&(this.row-row==0))||(Math.abs(this.col-col)==Math.abs(this.row-row)&& Math.abs(this.row-row)<=3))&&!(this.col==col&&this.row==row);}
 }

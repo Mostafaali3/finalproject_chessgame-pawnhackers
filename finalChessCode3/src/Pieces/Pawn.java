@@ -48,10 +48,10 @@ public class Pawn extends Piece{
 //        if(((col-this.col==row-this.row&&col>this.col)||( col-this.col< row-this.row && col-this.col+row-this.row==0)) && colorindex==-1 && board.getPiece(col,row)!=null)
 //            return true;
         if(((this.col-col==-1&&this.row-row==1)||this.col-col==1&&this.row-row==1) && colorindex==1 && board.getPiece(col,row)!=null)
-         return true;
+         return !(this.col==col&&this.row==row);
 
         if(((this.col-col==-1&&row-this.row==1)||this.col-col==1&&row-this.row==1) && colorindex==-1 && board.getPiece(col,row)!=null)
-            return true;
+            return !(this.col==col&&this.row==row);
      return false;
     }
 

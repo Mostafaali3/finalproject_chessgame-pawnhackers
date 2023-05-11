@@ -34,7 +34,7 @@ public class Knight extends Piece{
     }
     public boolean isvalidmovement(int col, int row){
 
-        return ((Math.abs(this.col-col)==2&&Math.abs(this.row-row)==3)||(Math.abs(this.row-row)==2&& Math.abs(this.col-col)==3));}
+        return ((Math.abs(this.col-col)==2&&Math.abs(this.row-row)==3)||(Math.abs(this.row-row)==2&& Math.abs(this.col-col)==3))&&!(this.col==col&&this.row==row);}
 
 
     }
