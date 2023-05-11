@@ -336,8 +336,16 @@ if (move.piece==move.capture){return false;}
     }
 
     public ArrayList canEatKing(King king){
-        if(king.isChecked())
-
+        ArrayList<Piece> checkingPieces= new ArrayList<>();
+        if(king.isChecked()){
+            for(Piece piece : pieceList ){
+                if (piece.isvalidmovement(king.col,king.row)){
+                    checkingPieces.add(piece);
+                }
+            }
+            return checkingPieces;
+        }
+        return null;
     }
 
 //    public boolean isCheckMated(int col,int row,Piece king){
