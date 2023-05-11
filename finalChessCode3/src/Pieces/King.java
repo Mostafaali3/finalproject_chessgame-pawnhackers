@@ -1,6 +1,7 @@
 package Pieces;
 
 import Main.Board;
+import Main.Input;
 import Main.Move;
 
 import javax.imageio.ImageIO;
@@ -45,6 +46,19 @@ public class King extends Piece {
         return false;
     }
 
+    public boolean isChecked (){
+        for(Piece piece : this.board.pieceList){
+            if(!board.sameTeam(this,piece)&&piece.isWhite&&board.input.count!=0){
+                if(piece.isvalidmovement(this.col,this.row)&&!piece.movecollideswithpiece(this.col,this.row)){
+                return true;}
+            }else if(!board.sameTeam(this,piece)&&!piece.isWhite&&board.input.count==0){
+                if(piece.isvalidmovement(this.col,this.row)&&!piece.movecollideswithpiece(this.col,this.row)){
+                    return true;}
+            }
+        }
+        return false;
+    }
+
     public  boolean cancastled(int col,int row ){
         if(this.row==row) {
             if (col == 6) {
@@ -75,10 +89,22 @@ public class King extends Piece {
 
 
 
+//    public boolean isvalidmovement(int col, int row){
+//        int x =  Math.abs( this.col-col);
+//        int y=Math.abs(this.row-row);
+//        return (x+y==1|| (x==1&&y==1) ||cancastled( col, row))&&!this.isValidMoveForAnotherPiece(col,row);}
+
     public boolean isvalidmovement(int col, int row){
         int x =  Math.abs( this.col-col);
         int y=Math.abs(this.row-row);
-        return x+y==1|| (x==1&&y==1) ||cancastled( col, row);}
+        //&&!board.isCheckMated(col,row,this)
+        if ((x+y==1|| (x==1&&y==1||cancastled( col, row)))){
+            if(this.isValidMoveForAnotherPiece(col,row)){
+                return false;
+            }
+            return true;
+        }
+        return false;}
 
 //||iscastled( col, row);}
 

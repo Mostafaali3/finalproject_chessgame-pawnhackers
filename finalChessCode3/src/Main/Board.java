@@ -28,7 +28,7 @@ public class Board extends JPanel {
      public ArrayList<Piece> eatenBlack =new ArrayList<>();
      BoardGui boardGui;
 
-    Input input =new Input(this);
+    public Input input =new Input(this);
     public int squareSize = 60;
     int rows=8;
     int cols = 8;
@@ -106,6 +106,16 @@ public class Board extends JPanel {
 
                 }
 
+                if(getPiece("King",true).isChecked()) {
+                    g2d.setColor(new Color(176, 167, 31,190));
+                    g2d.fillRect(getPiece("King",true).col*squareSize,getPiece("King",true).row*squareSize,squareSize,squareSize);
+
+                }
+                else if(getPiece("King",false).isChecked()) {
+                    g2d.setColor(new Color(176, 167, 31,190));
+                    g2d.fillRect(getPiece("King",false).col*squareSize,getPiece("King",false).row*squareSize,squareSize,squareSize);
+
+                }
 
 
 
@@ -124,6 +134,22 @@ public class Board extends JPanel {
         for(Piece piece : pieceList)
         {
             if(piece.col==col&&piece.row==row)
+            {
+                return piece;
+            }
+        }
+        return null;
+
+    }
+
+    public Piece getPiece(String name,Boolean isWhitePiece) {
+        for(Piece piece : pieceList)
+        {
+            if(piece.name.equals(name)&&isWhitePiece)
+            {
+                return piece;
+            }
+            if(piece.name.equals(name)&&!isWhitePiece)
             {
                 return piece;
             }
