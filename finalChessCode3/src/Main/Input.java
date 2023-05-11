@@ -50,6 +50,7 @@ public class Input extends MouseAdapter {
                 board.boardGui.timer2.start();
                 board.boardGui.timer1.stop();
                 board.makeMove(move);
+
                 if(board.selectedPiece.name=="Pawn"&&board.selectedPiece.isWhite&&row==0){
                     PromotionWindow promotionWindow=new PromotionWindow(col,row,board);
 //                    pieceString= JOptionPane.showInputDialog("Enter the piece to be promoted to:");
@@ -63,11 +64,15 @@ public class Input extends MouseAdapter {
 //                        board.promotion(col,row);
                 }
                 count++;
+                if (board.selectedPiece.name.equals("King")) {
+                    board.castling();
+                }
             }
             else if(board.isValidMove(move)&&count%2!=0&&!board.selectedPiece.isWhite){
                 board.boardGui.timer2.stop();
                 board.boardGui.timer1.start();
                 board.makeMove(move);
+
                 if(board.selectedPiece.name=="Pawn"&&board.selectedPiece.isWhite&&row==0){
                     PromotionWindow promotionWindow=new PromotionWindow(col,row,board);
 //                    pieceString= JOptionPane.showInputDialog("Enter the piece to be promoted to:");
@@ -80,7 +85,11 @@ public class Input extends MouseAdapter {
 //                    while (promotionWindow.getPieceString()==null)
 //                        board.promotion(col,row);
                 }
-                count++;}
+                count++;
+                if (board.selectedPiece.name.equals("King")) {
+                    board.castling();
+                }
+            }
             else {
                 board.selectedPiece.xPos = board.selectedPiece.col * board.squareSize;
                 board.selectedPiece.yPos = board.selectedPiece.row * board.squareSize;

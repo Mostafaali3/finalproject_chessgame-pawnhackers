@@ -200,6 +200,39 @@ public class Board extends JPanel {
 
     }
 
+    public void castling() {
+        for (Piece piece1 : pieceList) {
+            if (piece1.col == 7 && piece1.row == 0&&piece1.name.equals("Castle")&&piece1.movesCounter==0 && !piece1.isWhite&&this.getPiece(6,0)!=null) {
+                if (!this.getPiece(6, 0).isWhite && this.getPiece(6, 0).name.equals("King")) {
+                    this.makeMove(new Move(this, piece1, 5, 0));
+                    this.repaint();
+                    break;
+                }
+            }
+            else if (piece1.col == 7 && piece1.row == 7&&piece1.name.equals("Castle")&&piece1.movesCounter==0&& piece1.isWhite&&this.getPiece(6,7)!=null) {
+                if(this.getPiece(6,7).isWhite&&this.getPiece(6,7).name.equals("King")){
+                    this.makeMove(new Move(this,piece1,5,7));
+                    this.repaint();
+                    break;
+                }
+            }
+            else if (piece1.col == 0 && piece1.row == 7&&piece1.name.equals("Castle")&&piece1.movesCounter==0&& piece1.isWhite&&this.getPiece(2,7)!=null) {
+                if(this.getPiece(2,7).isWhite&&this.getPiece(2,7).name.equals("King")){
+                    this.makeMove(new Move(this,piece1,3,7));
+                    this.repaint();
+                    break;
+                }
+            }
+            else if (piece1.col == 0 && piece1.row == 0&&piece1.name.equals("Castle")&&piece1.movesCounter==0 && !piece1.isWhite&&this.getPiece(2,0)!=null) {
+                if (!this.getPiece(2, 0).isWhite && this.getPiece(2, 0).name.equals("King")) {
+                    this.makeMove(new Move(this, piece1, 3, 0));
+                    this.repaint();
+                    break;
+                }
+            }
+
+        }}
+
 
 
 
@@ -212,6 +245,7 @@ public class Board extends JPanel {
         move.piece.xPos = move.newCol*squareSize;
         move.piece.yPos = move.newRow*squareSize;
         move.piece.isFirstMove=false;
+        move.piece.movesCounter++;
         capture(move);
 
 

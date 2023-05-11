@@ -20,6 +20,7 @@ public class Piece {
     Image sprite;
     Board board;
     public boolean isFirstMove=true;
+    public int movesCounter;
 
 //    BufferedImage sheet;
 //    {
@@ -34,6 +35,7 @@ public class Piece {
 
     public Piece(Board board){
         this.board=board;
+        this.movesCounter=0;
 
     }
     public boolean isvalidmovement(int col, int row){ return true;}
