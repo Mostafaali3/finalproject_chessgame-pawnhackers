@@ -62,11 +62,12 @@ public class King extends Piece {
     public boolean isKingCheckmated(){
         for(int c=0;c<8;c++){
             for (int r=0;r<8;r++){
-                if(this.isChecked()&&!this.isvalidmovement(c,r)){
+                if(this.isChecked()&&this.isvalidmovement(c,r)){
                     return false;
                 }
             }
         }
+        
         return true;
 
     }
