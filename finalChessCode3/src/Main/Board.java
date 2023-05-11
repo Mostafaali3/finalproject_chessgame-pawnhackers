@@ -32,6 +32,8 @@ public class Board extends JPanel {
     public int squareSize = 60;
     int rows=8;
     int cols = 8;
+    CheckScanner checkScanner=new CheckScanner(this);
+
     public Board(BoardGui boardGui){
         this.setPreferredSize(new Dimension(cols*squareSize,rows*squareSize));
         this.addMouseListener(input);
@@ -299,7 +301,9 @@ public class Board extends JPanel {
         }
         if(!move.piece.isvalidmovement(move.newCol,move.newRow)){return false;}
         if(move.piece.movecollideswithpiece(move.newCol,move.newRow)){return false;}
-
+        if(checkScanner.isKingChecked(move)){
+            return false;
+        }
         return true;
     }
 
@@ -325,6 +329,15 @@ if (move.piece==move.capture){return false;}
 
 
     }
+    Piece findKing(boolean isWhite){
+        for (Piece piece:pieceList){
+            if(isWhite==piece.isWhite&&piece.name.equals("King")){
+                return piece;
+            }
+        }
+        return null;
+    }
+
 
 //    public boolean isCheckMated(int col,int row,Piece king){
 //        for(Piece piece : pieceList)
