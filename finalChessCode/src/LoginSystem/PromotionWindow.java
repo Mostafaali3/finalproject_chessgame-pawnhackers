@@ -16,7 +16,7 @@ public class PromotionWindow  implements ActionListener {
     JButton bishopButton;
     JButton knightButton;
     JButton castleButton;
-    String pieceString="bishop";
+    String pieceString="am";
     private ImageIcon queen = new ImageIcon("bllack queen.png");
     private ImageIcon knight = new ImageIcon("bllack knight.png");
     private ImageIcon bishop = new ImageIcon("whitte bishop.png");
@@ -154,6 +154,7 @@ public class PromotionWindow  implements ActionListener {
     }
 
     public String getPieceString() {
+        frame.setVisible(true);
         return pieceString;
     }
 }

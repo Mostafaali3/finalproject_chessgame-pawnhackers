@@ -23,67 +23,23 @@ public class Board extends JPanel {
 //    private JLabel name2;
 
 
+     public ArrayList<Piece> pieceList= new ArrayList<>();
+     public ArrayList<Piece> eatenWhite =new ArrayList<>();
+     public ArrayList<Piece> eatenBlack =new ArrayList<>();
+     BoardGui boardGui;
 
-
-
-
-    ArrayList<Piece> pieceList= new ArrayList<>();
     Input input =new Input(this);
     public int squareSize = 60;
     int rows=8;
     int cols = 8;
-    public Board(){
+    public Board(BoardGui boardGui){
         this.setPreferredSize(new Dimension(cols*squareSize,rows*squareSize));
         this.addMouseListener(input);
         this.addMouseMotionListener(input);
+        this.boardGui=boardGui;
         addPieces();
 
 
-
-//        frame=new JFrame("PawnHackers Chess");
-//        panel=new JLayeredPane();
-//        frame.add(panel);
-//        panel.setBounds(0,0,1012,636);
-//        frame.setSize(1012,636);
-//        frame.setVisible(true);
-//        frame.setResizable(false);
-//        frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-//        frame.setLocationRelativeTo(null);
-//        ImageIcon image = new ImageIcon("Logo.png");
-//        frame.setIconImage(image.getImage());
-//        frame.setLayout(null);
-//
-//
-//
-//
-//
-//        name1=new JLabel("Player 1's Time:");
-//        name1.setHorizontalAlignment(SwingConstants.CENTER);
-//        name1.setFont(new Font("Bayon",Font.BOLD,15));
-//        name1.setForeground(new Color(39,69,129,255));
-//        name1.setBounds(35,460,145,40);
-//        panel.add(name1);
-//
-//        name2=new JLabel("Player 2's Time:");
-//        name2.setHorizontalAlignment(SwingConstants.CENTER);
-//        name2.setFont(new Font("Bayon",Font.BOLD,15));
-//        name2.setForeground(new Color(39,69,129,255));
-//        name2.setBounds(819,460,145,40);
-//        panel.add(name2);
-//
-//        time1=new JLabel("05:00");
-//        time1.setHorizontalAlignment(SwingConstants.CENTER);
-//        time1.setFont(new Font("Bayon",Font.BOLD,20));
-//        time1.setForeground(new Color(39,69,129,255));
-//        time1.setBounds(70,510,76,40);
-//        panel.add(time1);
-//
-//        time2=new JLabel("05:00");
-//        time2.setHorizontalAlignment(SwingConstants.CENTER);
-//        time2.setFont(new Font("Bayon",Font.BOLD,20));
-//        time2.setForeground(new Color(39,69,129,255));
-//        time2.setBounds(854,510,76,40);
-//        panel.add(time2);
 
 
     }
@@ -119,16 +75,6 @@ public class Board extends JPanel {
             pieceList.add(new Pawn(this,col,1,false));
             pieceList.add(new Pawn(this,col,6,true));
         }
-
-
-
-
-
-
-
-
-
-
     }
 
 
@@ -214,11 +160,10 @@ public class Board extends JPanel {
 //
 //    }
 
-    public void promotion(int col,int row) {
+    public void promotion(int col,int row,String pieceName) {
         int i=0;
-        String pieceName=JOptionPane.showInputDialog("Enter the piece to be promoted to");
-
-        pieceName=pieceName.toLowerCase();
+//        String pieceName=JOptionPane.showInputDialog("Enter the piece to be promoted to");
+//        pieceName=pieceName.toLowerCase();
         for(Piece piece : pieceList)
         {
 
@@ -226,7 +171,7 @@ public class Board extends JPanel {
             {
                 if(!piece.isWhite){
                     if(pieceName.equals("queen")){
-                    pieceList.set(i,new Queen(this,col,row,false));}
+                        pieceList.set(i,new Queen(this,col,row,false));}
                     else if(pieceName.equals("bishop")){
                         pieceList.set(i,new Bishop(this,col,row,false));}
                     else if(pieceName.equals("knight")){
@@ -248,12 +193,12 @@ public class Board extends JPanel {
                         pieceList.set(i,new Castle(this,col,row,true));}
                     else{
                         pieceList.set(i,new Queen(this,col,row,true));}
-                    }
                 }
-            i++;
             }
-
+            i++;
         }
+
+    }
 
 
 
@@ -273,7 +218,16 @@ public class Board extends JPanel {
     }
 
     public void capture(Move move){
+        if(move.capture.isWhite){
+            eatenWhite.add(move.capture);
+            boardGui.displayDeadPieces(move.capture.isWhite,move.capture.name);
+        }
+        else{
+            eatenBlack.add(move.capture);
+            boardGui.displayDeadPieces(move.capture.isWhite,move.capture.name);
+        }
         pieceList.remove(move.capture);
+
     }
     public boolean isValidMove(Move move){
         if (sameTeam(move.piece,move.capture))
@@ -282,8 +236,6 @@ public class Board extends JPanel {
         }
         if(!move.piece.isvalidmovement(move.newCol,move.newRow)){return false;}
         if(move.piece.movecollideswithpiece(move.newCol,move.newRow)){return false;}
-
-
 
         return true;
     }
@@ -297,6 +249,7 @@ public class Board extends JPanel {
         if(!move.piece.isvalidmovement(move.newCol,move.newRow)){return false;}
 if (move.piece==move.capture){return false;}
 
+
         return true;
 
     }
@@ -309,6 +262,30 @@ if (move.piece==move.capture){return false;}
 
 
     }
+
+//    public boolean isCheckMated(int col,int row,Piece king){
+//        for(Piece piece : pieceList)
+//        {
+//            if(!this.sameTeam(king,piece))
+//            {
+//                if(piece.isvalidmovement(col,row)&&((king.col-1==col&&king.row+1==row))){
+//                    return true;
+//                    //&&((king.col+1==col&&king.row+1==row)||(king.col-1==col&&king.row+1==row)||(king.col-1==col&&king.row-1==row)||(king.col+1==col&&king.row-1==row))
+//                    //(king.col==col||king.col+1==col||king.col-1==col)&&(king.row==row||king.row+1==row||king.row-1==row)&&!((king.row==row)&&(king.col==col))
+//                }
+//                if (piece.isvalidmovement(col,row)&&((king.col==col&&king.row+1==row))){
+//                    return true;
+//                }
+//
+//            }
+//        }
+//        return false;
+//
+//
+//
+//    }
+
+
 
 
 

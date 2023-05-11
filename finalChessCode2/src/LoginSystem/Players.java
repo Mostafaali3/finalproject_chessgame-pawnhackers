@@ -42,6 +42,7 @@ public class Players implements ActionListener {
         frame.setVisible(true);
         label.setIcon(image);
 
+
         player1 =new JTextField("Player1");
         panel.add(player1);
         player1.setBounds(422,244,163,24);
