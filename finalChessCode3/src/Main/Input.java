@@ -1,5 +1,7 @@
 package Main;
 
+import LoginSystem.Login;
+import LoginSystem.Players;
 import LoginSystem.PromotionWindow;
 import Pieces.Piece;
 
@@ -8,6 +10,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.HashMap;
 
 public class Input extends MouseAdapter {
     String pieceString=null;
@@ -46,6 +49,12 @@ public class Input extends MouseAdapter {
         int row = e.getY()/board.squareSize;
         if (board.selectedPiece!=null){
             Move move = new Move(board,board.selectedPiece,col,row);
+            if(board.isGameEndedForWhite()||board.isGameEndedForBlack()){
+                Login login = new Login(new HashMap<>());
+            }
+            //            if(board.isGameEnded(move)){
+//                Players players = new Players();
+//            }
             if(board.isValidMove(move)){
                 board.boardGui.timer2.start();
                 board.boardGui.timer1.stop();

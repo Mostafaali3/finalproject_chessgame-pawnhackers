@@ -32,13 +32,15 @@ public class Board extends JPanel {
     public int squareSize = 60;
     int rows=8;
     int cols = 8;
-    CheckScanner checkScanner=new CheckScanner(this);
+    public CheckScanner checkScanner=new CheckScanner(this);
+    public int KingGreenSquares;
 
     public Board(BoardGui boardGui){
         this.setPreferredSize(new Dimension(cols*squareSize,rows*squareSize));
         this.addMouseListener(input);
         this.addMouseMotionListener(input);
         this.boardGui=boardGui;
+        this.KingGreenSquares=0;
         addPieces();
 
 
@@ -105,6 +107,9 @@ public class Board extends JPanel {
                 if(isValidMove(new Move(this,selectedPiece,c,r))) {
                    g2d.setColor(new Color(73, 186, 25,190));
                    g2d.fillRect(c*squareSize,r*squareSize,squareSize,squareSize);
+                   if(selectedPiece.name.equals("King")){
+                       KingGreenSquares++;
+                   }
 
                 }
 
@@ -128,6 +133,7 @@ public class Board extends JPanel {
             piece.paint(g2d);
         }
 
+
     }
 
 
@@ -142,6 +148,61 @@ public class Board extends JPanel {
         }
         return null;
 
+    }
+    public boolean isGameEndedForWhite(){
+        for(Piece piece : pieceList)
+        {
+            if(piece.isWhite){
+                for(int c = 0;c<8;c++)
+                {
+                    for(int r =0;r<8;r++)
+                    {
+                        Move move = new Move(this,piece,c,r);
+                        if(this.isValidMove(move)||findKing(true).isvalidmovement(c,r)){
+                        return false;}
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
+    public boolean isGameEndedForBlack(){
+        int KingValidMoves=0;
+        for(Piece piece : pieceList)
+        {
+            if(!piece.isWhite){
+                for(int c = 0;c<8;c++)
+                {
+                    for(int r =0;r<8;r++)
+                    {
+                        Move move = new Move(this,piece,c,r);
+                        Move kingMove = new Move(this,this.findKing(false),c,r);
+//                        if(findKing(false).isvalidmovement(c,r)){
+//                            KingValidMoves++;
+//                        }
+                        if(this.isValidMove(move)){
+
+                        return false;}
+                    }
+                }
+            }
+        }
+        if (this.countValidMoves(this.findKing(false))==0){
+            return true;
+        }
+        return false;
+    }
+
+    public int countValidMoves(Piece piece){
+        int counter=0;
+        for(int c = 0;c<8;c++) {
+            for (int r = 0; r < 8; r++) {
+                if(piece.isvalidmovement(c,r))
+                    counter++;
+            }
+        }
+        return counter;
     }
 
     public Piece getPiece(String name,Boolean isWhitePiece) {
@@ -304,7 +365,10 @@ public class Board extends JPanel {
         if(checkScanner.isKingChecked(move)){
             return false;
         }
-        return true;
+        else {
+            return true;
+        }
+
     }
 
     //for red square

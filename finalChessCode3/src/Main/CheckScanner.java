@@ -25,6 +25,8 @@ public class CheckScanner {
                 hitByBishop(move.newCol,move.newRow,king,kingCol,kingRow,1,-1)||  //up right
                 hitByBishop(move.newCol,move.newRow,king,kingCol,kingRow,1,1)||   //down right
                 hitByBishop(move.newCol,move.newRow,king,kingCol,kingRow,-1,1)||  //down left
+//                hitByBishop(move.newCol,move.newRow,king,kingCol,kingRow,1,0)||   //right
+//                hitByBishop(move.newCol,move.newRow,king,kingCol,kingRow,-1,0)||  //left
 
                 hitByKnight(move.newCol,move.newRow,king,kingCol,kingRow)||
                 hitByPawn(move.newCol,move.newRow,king,kingCol,kingRow)||
