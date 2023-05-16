@@ -27,7 +27,7 @@ When a pawn reaches the opposite end of the board, it can be promoted to a more 
 
 <img src="https://github.com/sbme-tutorials/finalproject_chessgame-pawnhackers/assets/126925323/136501b7-1dca-4d5b-91e5-40217576b3fd.png" width="500">\
  **And this for castling**\
- <img src="https://github.com/sbme-tutorials/finalproject_chessgame-pawnhackers/assets/126925323/17e730b6-99f3-4710-b604-96441d5a2e1d" width="500">
+ <img src="https://github.com/sbme-tutorials/finalproject_chessgame-pawnhackers/assets/126925323/17e730b6-99f3-4710-b604-96441d5a2e1d" width="500">\
 **bouns**\
 Bonus Feature: Chess Timer
 The chess timer is a bonus feature that adds an extra level of excitement to the game by adding a time limit for each player's turn. When enabled, the timer will start counting down from a specified amount of time as soon as the player's turn begins. the player can set the timer of the game before starting the game \
