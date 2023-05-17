@@ -10,7 +10,7 @@ To start the game, simply run the main class and follow the instructions on the 
   
  **And here is the login page**
  
-<img src="https://github.com/sbme-tutorials/finalproject_chessgame-pawnhackers/assets/126925323/1276c1ad-e058-448d-a495-0bdfbce9942a">
+<img src="https://github.com/sbme-tutorials/finalproject_chessgame-pawnhackers/assets/126925323/1276c1ad-e058-448d-a495-0bdfbce9942a.png" width="500">
 
 # Features
 **Board**\
@@ -25,12 +25,15 @@ The game detects when a player is in check or checkmate, and displays a message 
 **Promotion**\
 When a pawn reaches the opposite end of the board, it can be promoted to a more powerful piece. The game allows players to choose which piece to promote their pawn to.
 
-<img src="https://github.com/sbme-tutorials/finalproject_chessgame-pawnhackers/assets/126925323/136501b7-1dca-4d5b-91e5-40217576b3fd">
-
- 
+<img src="https://github.com/sbme-tutorials/finalproject_chessgame-pawnhackers/assets/126925323/136501b7-1dca-4d5b-91e5-40217576b3fd.png" width="500">\
  **And this for castling**\
- <img src="https://github.com/sbme-tutorials/finalproject_chessgame-pawnhackers/assets/126925323/17e730b6-99f3-4710-b604-96441d5a2e1d">
- 
+ <img src="https://github.com/sbme-tutorials/finalproject_chessgame-pawnhackers/assets/126925323/17e730b6-99f3-4710-b604-96441d5a2e1d" width="500">\
+**bouns**\
+Bonus Feature: Chess Timer
+The chess timer is a bonus feature that adds an extra level of excitement to the game by adding a time limit for each player's turn. When enabled, the timer will start counting down from a specified amount of time as soon as the player's turn begins. the player can set the timer of the game before starting the game \
+<img src="https://github.com/sbme-tutorials/finalproject_chessgame-pawnhackers/assets/126925323/ed18870c-9af3-4387-a695-76547a13f85a.png" width="500">\
+we also made a graveyard for the eaten pieces and determining the winner at the end of the game\
+<img src="https://github.com/sbme-tutorials/finalproject_chessgame-pawnhackers/assets/126925323/d6fe18f5-b0eb-4987-bb6b-a5120fc2306d.png" width="500">
 
 # credits
 This project was a team effort and would not have been possible without the contributions of the following individuals:\
