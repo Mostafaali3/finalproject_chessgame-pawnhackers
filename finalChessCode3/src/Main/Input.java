@@ -30,6 +30,9 @@ public class Input extends MouseAdapter {
         {
             board.selectedPiece = pieceXY;
         }
+        if(board.isGameEndedForBlack()){
+            Login login = new Login(new HashMap<>());
+        }
     }
 
     @Override
@@ -49,9 +52,7 @@ public class Input extends MouseAdapter {
         int row = e.getY()/board.squareSize;
         if (board.selectedPiece!=null){
             Move move = new Move(board,board.selectedPiece,col,row);
-            if(board.isGameEndedForWhite()||board.isGameEndedForBlack()){
-                Login login = new Login(new HashMap<>());
-            }
+
             //            if(board.isGameEnded(move)){
 //                Players players = new Players();
 //            }

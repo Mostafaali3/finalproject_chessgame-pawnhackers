@@ -1,5 +1,6 @@
 package Main;
 
+import LoginSystem.GameStatues;
 import LoginSystem.PromotionWindow;
 import Pieces.*;
 
@@ -345,10 +346,20 @@ public class Board extends JPanel {
                     if(move.capture.isWhite){
             eatenWhite.add(move.capture);
             boardGui.displayDeadPieces(move.capture.isWhite,move.capture.name);
+            if(move.capture.name.equals("King")){
+                boardGui.frame.dispose();
+                GameStatues gameStatues = new GameStatues(boardGui.getPlayer2(),"CHECKMATE",this.boardGui);
+
+            }
         }
         else{
             eatenBlack.add(move.capture);
             boardGui.displayDeadPieces(move.capture.isWhite,move.capture.name);
+                        if(move.capture.name.equals("King")){
+                            boardGui.frame.dispose();
+                            GameStatues gameStatues = new GameStatues(boardGui.getPlayer1(),"CHECKMATE",this.boardGui);
+
+                        }
         }
         }
 

@@ -181,7 +181,7 @@ public class Board extends JPanel {
 //                        if(findKing(false).isvalidmovement(c,r)){
 //                            KingValidMoves++;
 //                        }
-                        if(this.isValidMove(move)){
+                        if(piece.isvalidmovement(c,r)&&move.piece.movecollideswithpiece(move.newCol,move.newRow)){
 
                         return false;}
                     }
@@ -198,7 +198,7 @@ public class Board extends JPanel {
         int counter=0;
         for(int c = 0;c<8;c++) {
             for (int r = 0; r < 8; r++) {
-                if(piece.isvalidmovement(c,r))
+                if(this.isValidMove(new Move(this,piece,c,r)))
                     counter++;
             }
         }

@@ -347,11 +347,10 @@ public class BoardGui extends JLayeredPane {
                         minute2--;
                         ddSecond=dFormat.format(second2);
                         ddMinute=dFormat.format(minute2);
-                        time1.setText(ddMinute+":"+ddSecond);
                         time2.setText(ddMinute+":"+ddSecond);
                     }
                     if(minute2==0 && second2==0){
-                        GameStatues gameStatues=new GameStatues(p2,"Times's up", board1.boardGui);
+                        GameStatues gameStatues=new GameStatues(p1,"Times's up", board1.boardGui);
                         frame.dispose();
                     }
 
