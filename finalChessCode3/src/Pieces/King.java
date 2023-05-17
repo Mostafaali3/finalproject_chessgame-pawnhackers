@@ -98,7 +98,7 @@ public class King extends Piece {
         int x =  Math.abs( this.col-col);
         int y=Math.abs(this.row-row);
         //&&!board.isCheckMated(col,row,this)
-        if (((x+y==1)|| (x==1&&y==1||cancastled( col, row)))){
+        if ((x+y==1|| (x==1&&y==1||cancastled( col, row)))){
             if(this.isValidMoveForAnotherPiece(col,row)){
                 return false;
             }

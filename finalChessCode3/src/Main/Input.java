@@ -1,5 +1,6 @@
 package Main;
 
+import LoginSystem.GameStatues;
 import LoginSystem.Login;
 import LoginSystem.Players;
 import LoginSystem.PromotionWindow;
@@ -30,9 +31,6 @@ public class Input extends MouseAdapter {
         {
             board.selectedPiece = pieceXY;
         }
-        if(board.isGameEndedForBlack()){
-            Login login = new Login(new HashMap<>());
-        }
     }
 
     @Override
@@ -52,14 +50,38 @@ public class Input extends MouseAdapter {
         int row = e.getY()/board.squareSize;
         if (board.selectedPiece!=null){
             Move move = new Move(board,board.selectedPiece,col,row);
-
             //            if(board.isGameEnded(move)){
 //                Players players = new Players();
 //            }
-            if(board.isValidMove(move)){
+//            if(board.isValidMove(move)){
+//                board.boardGui.timer2.start();
+//                board.boardGui.timer1.stop();
+//                board.makeMove(move);
+//                if(board.selectedPiece.name=="Pawn"&&board.selectedPiece.isWhite&&row==0){
+//                    PromotionWindow promotionWindow=new PromotionWindow(col,row,board);
+////                    pieceString= JOptionPane.showInputDialog("Enter the piece to be promoted to:");
+////                    while (promotionWindow.getPieceString()==null)
+////                        board.promotion(col,row);
+//                }
+//                else if(board.selectedPiece.name=="Pawn"&&!board.selectedPiece.isWhite&&row==7){
+//                    PromotionWindow promotionWindow=new PromotionWindow(col,row,board);
+//
+////                    while (promotionWindow.getPieceString()==null)
+////                        board.promotion(col,row);
+//                }
+//
+//            }
+//            else {
+//                board.selectedPiece.xPos = board.selectedPiece.col * board.squareSize;
+//                board.selectedPiece.yPos = board.selectedPiece.row * board.squareSize;
+//
+//            }
+
+            if(board.isValidMove(move)&&count%2==0&&board.selectedPiece.isWhite){
                 board.boardGui.timer2.start();
                 board.boardGui.timer1.stop();
                 board.makeMove(move);
+
                 if(board.selectedPiece.name=="Pawn"&&board.selectedPiece.isWhite&&row==0){
                     PromotionWindow promotionWindow=new PromotionWindow(col,row,board);
 //                    pieceString= JOptionPane.showInputDialog("Enter the piece to be promoted to:");
@@ -72,62 +94,45 @@ public class Input extends MouseAdapter {
 //                    while (promotionWindow.getPieceString()==null)
 //                        board.promotion(col,row);
                 }
+                count++;
+                if (board.selectedPiece.name.equals("King")) {
+                    board.castling();
+                }
+                if(board.isGameEndedForWhite()){
+                    GameStatues gameStatues=new GameStatues(board.boardGui.getPlayer2(),"Checkmate", board.boardGui);
+                }
+            }
+            else if(board.isValidMove(move)&&count%2!=0&&!board.selectedPiece.isWhite){
+                board.boardGui.timer2.stop();
+                board.boardGui.timer1.start();
+                board.makeMove(move);
 
+                if(board.selectedPiece.name=="Pawn"&&board.selectedPiece.isWhite&&row==0){
+                    PromotionWindow promotionWindow=new PromotionWindow(col,row,board);
+//                    pieceString= JOptionPane.showInputDialog("Enter the piece to be promoted to:");
+//                    while (promotionWindow.getPieceString()==null)
+//                        board.promotion(col,row);
+                }
+                else if(board.selectedPiece.name=="Pawn"&&!board.selectedPiece.isWhite&&row==7){
+                    PromotionWindow promotionWindow=new PromotionWindow(col,row,board);
+
+//                    while (promotionWindow.getPieceString()==null)
+//                        board.promotion(col,row);
+                }
+                count++;
+                if (board.selectedPiece.name.equals("King")) {
+                    board.castling();
+                }
+                if(board.isGameEndedForBlack()){
+                    GameStatues gameStatues=new GameStatues(board.boardGui.getPlayer1(),"Checkmate", board.boardGui);
+                }
             }
             else {
                 board.selectedPiece.xPos = board.selectedPiece.col * board.squareSize;
                 board.selectedPiece.yPos = board.selectedPiece.row * board.squareSize;
 
             }
-//            if(board.isValidMove(move)&&count%2==0&&board.selectedPiece.isWhite){
-//                board.boardGui.timer2.start();
-//                board.boardGui.timer1.stop();
-//                board.makeMove(move);
-//
-//                if(board.selectedPiece.name=="Pawn"&&board.selectedPiece.isWhite&&row==0){
-//                    PromotionWindow promotionWindow=new PromotionWindow(col,row,board);
-////                    pieceString= JOptionPane.showInputDialog("Enter the piece to be promoted to:");
-////                    while (promotionWindow.getPieceString()==null)
-////                        board.promotion(col,row);
-//                }
-//                else if(board.selectedPiece.name=="Pawn"&&!board.selectedPiece.isWhite&&row==7){
-//                    PromotionWindow promotionWindow=new PromotionWindow(col,row,board);
-//
-////                    while (promotionWindow.getPieceString()==null)
-////                        board.promotion(col,row);
-//                }
-//                count++;
-//                if (board.selectedPiece.name.equals("King")) {
-//                    board.castling();
-//                }
-//            }
-//            else if(board.isValidMove(move)&&count%2!=0&&!board.selectedPiece.isWhite){
-//                board.boardGui.timer2.stop();
-//                board.boardGui.timer1.start();
-//                board.makeMove(move);
-//
-//                if(board.selectedPiece.name=="Pawn"&&board.selectedPiece.isWhite&&row==0){
-//                    PromotionWindow promotionWindow=new PromotionWindow(col,row,board);
-////                    pieceString= JOptionPane.showInputDialog("Enter the piece to be promoted to:");
-////                    while (promotionWindow.getPieceString()==null)
-////                        board.promotion(col,row);
-//                }
-//                else if(board.selectedPiece.name=="Pawn"&&!board.selectedPiece.isWhite&&row==7){
-//                    PromotionWindow promotionWindow=new PromotionWindow(col,row,board);
-//
-////                    while (promotionWindow.getPieceString()==null)
-////                        board.promotion(col,row);
-//                }
-//                count++;
-//                if (board.selectedPiece.name.equals("King")) {
-//                    board.castling();
-//                }
-//            }
-//            else {
-//                board.selectedPiece.xPos = board.selectedPiece.col * board.squareSize;
-//                board.selectedPiece.yPos = board.selectedPiece.row * board.squareSize;
-//
-//            }
+
         }
         board.selectedPiece=null;
         board.repaint();

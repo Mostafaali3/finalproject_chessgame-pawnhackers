@@ -33,7 +33,7 @@ public class Castle extends Piece {
 
     public boolean isvalidmovement(int col, int row) {
 
-        return (this.col == col || this.row == row)&&!(this.col==col&&this.row==row);
+        return ((this.col == col || this.row == row)&&!(this.col==col&&this.row==row));
     }
 
     @Override
