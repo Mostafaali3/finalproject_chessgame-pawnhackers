@@ -19,8 +19,7 @@ The game board is displayed on the screen, with the pieces arranged in their sta
 **Piece Movement**\
 Players can move their pieces by entering the starting and ending positions of the piece they want to move. The game enforces the rules of chess, ensuring that players can only make legal moves.
 
-**Check and Checkmate**\
-The game detects when a player is in check or checkmate, and displays a message on the screen to inform the players whith the score.
+ <img src="https://github.com/sbme-tutorials/finalproject_chessgame-pawnhackers/assets/126925323/aa655358-9edc-46a5-ab3e-3eec1c2ff759" width="500">\
 
 **Promotion**\
 When a pawn reaches the opposite end of the board, it can be promoted to a more powerful piece. The game allows players to choose which piece to promote their pawn to.
