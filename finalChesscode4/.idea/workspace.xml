@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="528713bd-36a4-4756-9a93-29afade81703" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../finalChessCode3/out/production/chess code/Main/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/../finalChessCode3/out/production/chess code/Main/Board.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../finalChessCode3/out/production/chess code/Main/Input.class" beforeDir="false" afterPath="$PROJECT_DIR$/../finalChessCode3/out/production/chess code/Main/Input.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../finalChessCode3/src/Main/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/../finalChessCode3/src/Main/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../finalChessCode3/src/Main/Input.java" beforeDir="false" afterPath="$PROJECT_DIR$/../finalChessCode3/src/Main/Input.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../finalChessCode3/src/Pieces/King.java" beforeDir="false" afterPath="$PROJECT_DIR$/../finalChessCode3/src/Pieces/King.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +21,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/mosta/OneDrive/Documents/GitHub/finalproject_chessgame-pawnhackers/finalChesscode4/finalChessCode3"
+    "last_opened_file_path": "D:/finalChessCode3"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
