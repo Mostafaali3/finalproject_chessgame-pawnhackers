@@ -22,7 +22,7 @@ public class Main {
                 IDandPasswords idandPasswords = new IDandPasswords();
 
                 Login loginPage = new Login(idandPasswords.getLoginInfo());
-//                PromotionWindow window = new PromotionWindow();
+//                PromotionWindow window = new PromotionWindow(1,2,new Board());
 //                BoardGui gui = new BoardGui();
 
 
