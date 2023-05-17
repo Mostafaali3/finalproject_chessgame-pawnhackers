@@ -1,5 +1,7 @@
 package Main;
 
+import LoginSystem.GameStatues;
+import LoginSystem.GameStatues;
 import LoginSystem.IDandPasswords;
 import LoginSystem.Login;
 import LoginSystem.PromotionWindow;
@@ -20,8 +22,9 @@ public class Main {
                 IDandPasswords idandPasswords = new IDandPasswords();
 
                 Login loginPage = new Login(idandPasswords.getLoginInfo());
-//                PromotionWindow window = new PromotionWindow();
+//                PromotionWindow window = new PromotionWindow(1,2,new Board());
 //                BoardGui gui = new BoardGui();
+
 
 
 

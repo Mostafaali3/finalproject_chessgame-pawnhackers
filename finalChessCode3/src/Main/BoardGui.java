@@ -1,5 +1,6 @@
 package Main;
 
+import LoginSystem.GameStatues;
 import LoginSystem.MyButton;
 import LoginSystem.Person;
 //import LoginSystem.PersonalTimer;
@@ -26,11 +27,10 @@ public class BoardGui extends JLayeredPane {
     private JPanel newPanel;
     private JPanel deadWhite;
     private JPanel deadBlack;
-    private int counterBlack;
-    private int counterWhite;
+
     public Timer timer1;
     public Timer timer2;
-    private int second,minute;
+    private int second1,second2,minute1,minute2;
     private DecimalFormat dFormat=new DecimalFormat("00");
     private String ddSecond;
     private String  ddMinute;
@@ -59,9 +59,6 @@ public class BoardGui extends JLayeredPane {
 
 
     public BoardGui(Person p1, Person p2) {
-
-        counterBlack = 0;
-        counterWhite = 0;
         this.p1=p1;
         this.p2=p2;
 
@@ -175,8 +172,10 @@ public class BoardGui extends JLayeredPane {
 //        PersonalTimer timer2=new PersonalTimer(p1.getTimer(), this);
 //        time1.setText(timer1.getDdMinute()+":"+timer2.getDdSecond());
 //        time2.setText(timer2.getDdMinute()+":"+timer2.getDdSecond());
-        second=0;
-        minute=p1.getTimer();
+        second1=0;
+        second2=0;
+        minute1=p1.getTimer();
+        minute2=p1.getTimer();
         time1.setText("0"+p1.getTimer()+":00");
         time2.setText("0"+p1.getTimer()+":00");
         timer();
@@ -203,50 +202,50 @@ public class BoardGui extends JLayeredPane {
             if (name.equals("Bishop")) {
                 for (MyButton myButton : deadWhiteList)
                 {
-                    if (myButton.index==counterWhite){
+                    if (myButton.index== p1.getEatenPieces()){
                         ImageIcon whiteDeadBishop=new ImageIcon("white bishop 1.png");
                         myButton.setIcon(whiteDeadBishop);
                     }
                 }
-                this.counterWhite++;
+                p1.addEatenpieces();
             }if (name.equals("Castle")) {
                 for (MyButton myButton : deadWhiteList)
                 {
-                    if (myButton.index==counterWhite){
+                    if (myButton.index== p1.getEatenPieces()){
                         ImageIcon whiteDeadCastle=new ImageIcon("white castle 1.png");
                         myButton.setIcon(whiteDeadCastle);
                     }
                 }
-                this.counterWhite++;
+                p1.addEatenpieces();
             }if (name.equals("Queen")) {
                 for (MyButton myButton : deadWhiteList)
                 {
-                    if (myButton.index==counterWhite){
+                    if (myButton.index== p1.getEatenPieces()){
                         ImageIcon whiteDeadQueen=new ImageIcon("white queen 1.png");
                         myButton.setIcon(whiteDeadQueen);
                     }
                 }
-                this.counterWhite++;
+                p1.addEatenpieces();
             }if (name.equals("Knight")) {
                 for (MyButton myButton : deadWhiteList)
                 {
-                    if (myButton.index==counterWhite){
+                    if (myButton.index== p1.getEatenPieces()){
                         ImageIcon whiteDeadKnight=new ImageIcon("white knight 1.png");
                         myButton.setIcon(whiteDeadKnight);
 
                     }
                 }
-                this.counterWhite++;
+                p1.addEatenpieces();
             }
             if (name.equals("Pawn")) {
                 for (MyButton myButton : deadWhiteList)
                 {
-                    if (myButton.index==counterWhite){
+                    if (myButton.index==p1.getEatenPieces()){
                         ImageIcon whiteDeadPawn=new ImageIcon("white pawn 1.png");
                         myButton.setIcon(whiteDeadPawn);
                     }
                 }
-                this.counterWhite++;
+                p1.addEatenpieces();
             }
 
         }
@@ -254,51 +253,51 @@ public class BoardGui extends JLayeredPane {
             if (name.equals("Pawn")) {
                 for (MyButton myButton : deadBlackList)
                 {
-                    if (myButton.index==counterBlack){
+                    if (myButton.index== p2.getEatenPieces()){
                         ImageIcon BlackDeadPawn=new ImageIcon("black pawn 1.png");
                         myButton.setIcon(BlackDeadPawn);
                     }
                 }
-                this.counterBlack++;
+                p2.addEatenpieces();
             }if (name.equals("Bishop")) {
                 for (MyButton myButton : deadBlackList)
                 {
-                    if (myButton.index==counterBlack){
+                    if (myButton.index==p2.getEatenPieces()){
                         ImageIcon BlackDeadBishop=new ImageIcon("black bishop 1.png");
                         myButton.setIcon(BlackDeadBishop);
                     }
                 }
-                this.counterBlack++;
+                p2.addEatenpieces();
             }if (name.equals("Knight")) {
                 for (MyButton myButton : deadBlackList)
                 {
-                    if (myButton.index==counterBlack){
+                    if (myButton.index==p2.getEatenPieces()){
                         ImageIcon BlackDeadKnight=new ImageIcon("black knight 1.png");
                         myButton.setIcon(BlackDeadKnight);
 
                     }
                 }
-                this.counterBlack++;
+                p2.addEatenpieces();
             }if (name.equals("Queen")) {
                 for (MyButton myButton : deadBlackList)
                 {
-                    if (myButton.index==counterBlack){
+                    if (myButton.index== p2.getEatenPieces()){
                         ImageIcon BlackDeadQueen=new ImageIcon("black queen 1.png");
                         myButton.setIcon(BlackDeadQueen);
 
                     }
                 }
-                this.counterBlack++;
+                p2.addEatenpieces();
             }if (name.equals("Castle")) {
                 for (MyButton myButton : deadBlackList)
                 {
-                    if (myButton.index==counterBlack){
+                    if (myButton.index== p2.getEatenPieces()){
                         ImageIcon BlackDeadCastle=new ImageIcon("black castle 1.png");
                         myButton.setIcon(BlackDeadCastle);
 
                     }
                 }
-                this.counterBlack++;
+                p2.addEatenpieces();
             }
         }
 
@@ -311,25 +310,26 @@ public class BoardGui extends JLayeredPane {
         timer1=new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                second--;
-                ddSecond=dFormat.format(second);
-                ddMinute=dFormat.format(minute);
+                second1--;
+                ddSecond=dFormat.format(second1);
+                ddMinute=dFormat.format(minute1);
                 time1.setText(ddMinute+":"+ddSecond);
 
 
-                    if(second==-1){
-                        second=59;
-                        minute--;
-                    ddSecond=dFormat.format(second);
-                    ddMinute=dFormat.format(minute);
+                    if(second1==-1){
+                        second1=59;
+                        minute1--;
+                    ddSecond=dFormat.format(second1);
+                    ddMinute=dFormat.format(minute1);
                     time1.setText(ddMinute+":"+ddSecond);
 
                 }
 //                if(board1.isValidMove(move)&&count%2==0&&board.selectedPiece.isWhite){
 //
 //                }
-                if(minute==0 && second==0){
-                    timer1.stop();
+                if(minute1==0 && second1==0){
+                    GameStatues gameStatues=new GameStatues(p2,"Times's up",board1.boardGui);
+                    frame.dispose();
                 }
 
             }
@@ -337,21 +337,21 @@ public class BoardGui extends JLayeredPane {
             timer2=new Timer(1000, new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    second--;
-                    ddSecond=dFormat.format(second);
-                    ddMinute=dFormat.format(minute);
+                    second2--;
+                    ddSecond=dFormat.format(second2);
+                    ddMinute=dFormat.format(minute2);
                     time2.setText(ddMinute+":"+ddSecond);
 
-                    if(second==-1){
-                        second=59;
-                        minute--;
-                        ddSecond=dFormat.format(second);
-                        ddMinute=dFormat.format(minute);
-                        time1.setText(ddMinute+":"+ddSecond);
+                    if(second2==-1){
+                        second2=59;
+                        minute2--;
+                        ddSecond=dFormat.format(second2);
+                        ddMinute=dFormat.format(minute2);
                         time2.setText(ddMinute+":"+ddSecond);
                     }
-                    if(minute==0 && second==0){
-                        timer2.stop();
+                    if(minute2==0 && second2==0){
+                        GameStatues gameStatues=new GameStatues(p1,"Times's up", board1.boardGui);
+                        frame.dispose();
                     }
 
                 }
@@ -363,8 +363,13 @@ public class BoardGui extends JLayeredPane {
 
         }
 
+    public Person getPlayer1() {
+        return p1;
+    }
 
-
+    public Person getPlayer2() {
+        return p2;
+    }
 
 
 }

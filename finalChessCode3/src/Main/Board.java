@@ -1,5 +1,6 @@
 package Main;
 
+import LoginSystem.GameStatues;
 import LoginSystem.PromotionWindow;
 import Pieces.*;
 
@@ -93,6 +94,16 @@ public class Board extends JPanel {
                 g2d.fillRect(c*squareSize,r*squareSize,squareSize,squareSize);
 
             }
+        if(getPiece("King",true).isChecked()) {
+            g2d.setColor(new Color(176, 167, 31,190));
+            g2d.fillRect(getPiece("King",true).col*squareSize,getPiece("King",true).row*squareSize,squareSize,squareSize);
+
+        }
+        else if(getPiece("King",false).isChecked()) {
+            g2d.setColor(new Color(176, 167, 31,190));
+            g2d.fillRect(getPiece("King",false).col*squareSize,getPiece("King",false).row*squareSize,squareSize,squareSize);
+
+        }
         if(selectedPiece!=null)
         for(int r=0;r<rows;r++)
             for(int c=0;c<cols;c++)
@@ -113,16 +124,7 @@ public class Board extends JPanel {
 
                 }
 
-                if(getPiece("King",true).isChecked()) {
-                    g2d.setColor(new Color(176, 167, 31,190));
-                    g2d.fillRect(getPiece("King",true).col*squareSize,getPiece("King",true).row*squareSize,squareSize,squareSize);
 
-                }
-                else if(getPiece("King",false).isChecked()) {
-                    g2d.setColor(new Color(176, 167, 31,190));
-                    g2d.fillRect(getPiece("King",false).col*squareSize,getPiece("King",false).row*squareSize,squareSize,squareSize);
-
-                }
 
 
 
@@ -181,24 +183,24 @@ public class Board extends JPanel {
 //                        if(findKing(false).isvalidmovement(c,r)){
 //                            KingValidMoves++;
 //                        }
-                        if(piece.isvalidmovement(c,r)&&move.piece.movecollideswithpiece(move.newCol,move.newRow)){
+                        if(this.isValidMove(move)){
 
                         return false;}
                     }
                 }
             }
         }
-        if (this.countValidMoves(this.findKing(false))==0){
+        if (this.countValidMoves(this.findKing(false))==1){
             return true;
         }
-        return false;
+        return true;
     }
 
     public int countValidMoves(Piece piece){
         int counter=0;
         for(int c = 0;c<8;c++) {
             for (int r = 0; r < 8; r++) {
-                if(this.isValidMove(new Move(this,piece,c,r)))
+                if(piece.isvalidmovement(c,r))
                     counter++;
             }
         }
@@ -345,10 +347,20 @@ public class Board extends JPanel {
                     if(move.capture.isWhite){
             eatenWhite.add(move.capture);
             boardGui.displayDeadPieces(move.capture.isWhite,move.capture.name);
+            if(move.capture.name.equals("King")){
+                boardGui.frame.dispose();
+                GameStatues gameStatues = new GameStatues(boardGui.getPlayer2(),"CHECKMATE",this.boardGui);
+
+            }
         }
         else{
             eatenBlack.add(move.capture);
             boardGui.displayDeadPieces(move.capture.isWhite,move.capture.name);
+                        if(move.capture.name.equals("King")){
+                            boardGui.frame.dispose();
+                            GameStatues gameStatues = new GameStatues(boardGui.getPlayer1(),"CHECKMATE",this.boardGui);
+
+                        }
         }
         }
 

@@ -16,6 +16,13 @@ public class Person {
     public int getEatenPieces() {
         return eatenPieces;
     }
+    public void addEatenpieces(){
+        eatenPieces++;
+    }
+
+    public void setEatenPieces() {
+        this.eatenPieces = 0;
+    }
 
     public int getTimer() {
         return timer;
